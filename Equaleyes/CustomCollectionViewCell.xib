@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Custom Cell" id="qUo-hm-KNL" customClass="CustomCollectionViewCell" customModule="Equaleyes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="488" height="297"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="488" height="297"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-nk-WYf" userLabel="Rounded View">
+                        <rect key="frame" x="0.0" y="5" width="488" height="297"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncv-0W-uLH">
+                        <rect key="frame" x="174" y="247" width="140" height="30"/>
+                        <color key="backgroundColor" red="0.14380401370000001" green="0.1299412251" blue="0.35688281059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="UCx-N0-lzC"/>
+                            <constraint firstAttribute="width" constant="140" id="v9y-Ih-z1a"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="16"/>
+                        <state key="normal" title="Contact">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="contactButtonAction:" destination="qUo-hm-KNL" eventType="touchUpInside" id="KJf-Mu-Tz4"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account Circle" translatesAutoresizingMaskIntoConstraints="NO" id="mjb-XS-L51">
+                        <rect key="frame" x="20" y="20" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="mjb-XS-L51" secondAttribute="height" multiplier="1:1" id="Cui-SK-7GD"/>
+                            <constraint firstAttribute="width" constant="70" id="za5-OR-Igq"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Path" translatesAutoresizingMaskIntoConstraints="NO" id="Xhi-BM-BIi">
+                        <rect key="frame" x="452" y="44" width="16" height="219"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="imy-lP-e9d"/>
+                        </constraints>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Roger Mills" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HN-Ps-uYe" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
+                        <rect key="frame" x="110" y="20" width="322" height="207"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" red="0.23529779910000001" green="0.2352874875" blue="0.2352944911" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="kZu-nk-WYf" firstAttribute="height" secondItem="qUo-hm-KNL" secondAttribute="height" id="1DN-NI-ESn"/>
+                <constraint firstItem="mjb-XS-L51" firstAttribute="leading" secondItem="qUo-hm-KNL" secondAttribute="leading" constant="20" id="29k-vR-dJW"/>
+                <constraint firstItem="1HN-Ps-uYe" firstAttribute="leading" secondItem="mjb-XS-L51" secondAttribute="trailing" constant="20" id="JJb-tC-xQ8"/>
+                <constraint firstItem="Xhi-BM-BIi" firstAttribute="leading" secondItem="1HN-Ps-uYe" secondAttribute="trailing" constant="20" id="JQh-5j-F3Y"/>
+                <constraint firstItem="kZu-nk-WYf" firstAttribute="centerX" secondItem="lNT-xQ-Ql2" secondAttribute="centerX" id="N1I-Xq-Z4c"/>
+                <constraint firstItem="Ncv-0W-uLH" firstAttribute="top" secondItem="1HN-Ps-uYe" secondAttribute="bottom" constant="20" id="OOF-OU-07J"/>
+                <constraint firstItem="Ncv-0W-uLH" firstAttribute="centerX" secondItem="qUo-hm-KNL" secondAttribute="centerX" id="Of3-w9-Rxi"/>
+                <constraint firstItem="lNT-xQ-Ql2" firstAttribute="bottom" secondItem="Xhi-BM-BIi" secondAttribute="bottom" id="aNa-5O-lez"/>
+                <constraint firstItem="Xhi-BM-BIi" firstAttribute="top" secondItem="lNT-xQ-Ql2" secondAttribute="top" id="eLz-Dv-ScJ"/>
+                <constraint firstAttribute="trailing" secondItem="Xhi-BM-BIi" secondAttribute="trailing" constant="20" id="fWJ-si-Nyd"/>
+                <constraint firstItem="kZu-nk-WYf" firstAttribute="width" secondItem="qUo-hm-KNL" secondAttribute="width" id="fWs-WV-49O"/>
+                <constraint firstItem="mjb-XS-L51" firstAttribute="top" secondItem="qUo-hm-KNL" secondAttribute="top" constant="20" id="j1K-iS-A7g"/>
+                <constraint firstItem="1HN-Ps-uYe" firstAttribute="top" secondItem="mjb-XS-L51" secondAttribute="top" id="o3t-rP-2YU"/>
+                <constraint firstItem="kZu-nk-WYf" firstAttribute="centerY" secondItem="lNT-xQ-Ql2" secondAttribute="centerY" id="oFk-UD-PQt"/>
+                <constraint firstAttribute="bottom" secondItem="Ncv-0W-uLH" secondAttribute="bottom" constant="20" id="wu4-dP-dvm"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="lNT-xQ-Ql2"/>
+            <size key="customSize" width="488" height="297"/>
+            <connections>
+                <outlet property="userContactButtonOutlet" destination="Ncv-0W-uLH" id="SZt-Sq-7jZ"/>
+                <outlet property="userInfoTextView" destination="1HN-Ps-uYe" id="2zj-N5-35X"/>
+                <outlet property="userProfileImageView" destination="mjb-XS-L51" id="nnk-wA-Bcu"/>
+            </connections>
+            <point key="canvasLocation" x="202.89855072463769" y="61.941964285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Account Circle" width="27" height="27"/>
+        <image name="Path" width="10" height="18"/>
+    </resources>
+</document>

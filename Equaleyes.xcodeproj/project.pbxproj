@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		7B5C1D522264BD4D00AF5E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D512264BD4D00AF5E3D /* AppDelegate.swift */; };
-		7B5C1D542264BD4D00AF5E3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D532264BD4D00AF5E3D /* ViewController.swift */; };
 		7B5C1D572264BD4D00AF5E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D552264BD4D00AF5E3D /* Main.storyboard */; };
 		7B5C1D592264BD4F00AF5E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */; };
 		7B5C1D5C2264BD4F00AF5E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D5A2264BD4F00AF5E3D /* LaunchScreen.storyboard */; };
 		7B5C1D672264BD4F00AF5E3D /* EqualeyesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D662264BD4F00AF5E3D /* EqualeyesTests.swift */; };
+		7B5C1D852264CC9600AF5E3D /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */; };
+		7B5C1D862264CC9600AF5E3D /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */; };
+		7B5C1D882264CF0200AF5E3D /* TeachersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */; };
+		7B5C1D8A2264E98700AF5E3D /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D892264E98700AF5E3D /* IBDesignables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +31,6 @@
 /* Begin PBXFileReference section */
 		7B5C1D4E2264BD4D00AF5E3D /* Equaleyes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equaleyes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5C1D512264BD4D00AF5E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7B5C1D532264BD4D00AF5E3D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7B5C1D562264BD4D00AF5E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B5C1D5B2264BD4F00AF5E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +38,10 @@
 		7B5C1D622264BD4F00AF5E3D /* EqualeyesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EqualeyesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5C1D662264BD4F00AF5E3D /* EqualeyesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualeyesTests.swift; sourceTree = "<group>"; };
 		7B5C1D682264BD4F00AF5E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachersCollectionViewController.swift; sourceTree = "<group>"; };
+		7B5C1D892264E98700AF5E3D /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				7B5C1D512264BD4D00AF5E3D /* AppDelegate.swift */,
-				7B5C1D532264BD4D00AF5E3D /* ViewController.swift */,
 				7B5C1D552264BD4D00AF5E3D /* Main.storyboard */,
+				7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */,
+				7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */,
+				7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */,
+				7B5C1D892264E98700AF5E3D /* IBDesignables.swift */,
 				7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */,
 				7B5C1D5A2264BD4F00AF5E3D /* LaunchScreen.storyboard */,
 				7B5C1D5D2264BD4F00AF5E3D /* Info.plist */,
@@ -179,6 +188,7 @@
 			files = (
 				7B5C1D5C2264BD4F00AF5E3D /* LaunchScreen.storyboard in Resources */,
 				7B5C1D592264BD4F00AF5E3D /* Assets.xcassets in Resources */,
+				7B5C1D862264CC9600AF5E3D /* CustomCollectionViewCell.xib in Resources */,
 				7B5C1D572264BD4D00AF5E3D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,8 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B5C1D542264BD4D00AF5E3D /* ViewController.swift in Sources */,
 				7B5C1D522264BD4D00AF5E3D /* AppDelegate.swift in Sources */,
+				7B5C1D882264CF0200AF5E3D /* TeachersCollectionViewController.swift in Sources */,
+				7B5C1D8A2264E98700AF5E3D /* IBDesignables.swift in Sources */,
+				7B5C1D852264CC9600AF5E3D /* CustomCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +375,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NM48V535H;
 				INFOPLIST_FILE = Equaleyes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,6 +394,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NM48V535H;
 				INFOPLIST_FILE = Equaleyes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
