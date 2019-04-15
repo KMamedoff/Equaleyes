@@ -10,6 +10,8 @@ import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var studentsCellTextViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var teachersCellTextViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var userInfoTextView: UITextViewFixed!
     @IBOutlet weak var userContactButtonOutlet: UIButton!
@@ -17,9 +19,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        userProfileImageView.layer.cornerRadius = userProfileImageView.layer.bounds.width / 2
+        userProfileImageView.layer.borderWidth = 1.0
+        userProfileImageView.layer.borderColor = UIColor.darkGray.cgColor
+        
         userContactButtonOutlet.layer.masksToBounds = true
         userContactButtonOutlet.layer.cornerRadius = 16
-        
         
         let usernameTextAttributes: [NSAttributedString.Key: Any] = [
             .font : UIFont(name: "AvenirNextCondensed-Medium", size: 26)!,
@@ -36,13 +41,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
         let attributedString = NSMutableAttributedString()
         attributedString.append(NSAttributedString(string: "Roger Mills\n", attributes: usernameTextAttributes))
-        attributedString.append(NSAttributedString(string: "Class: 10\n", attributes: classTextAttributes))
-        attributedString.append(NSAttributedString(string: "School: Cavour Ave\n", attributes: schoolTextAttributes))
+        attributedString.append(NSAttributedString(string: "Class:    10\n", attributes: classTextAttributes))
+        attributedString.append(NSAttributedString(string: "School:   Cavour Ave\n", attributes: schoolTextAttributes))
 
-        userInfoTextView.attributedText = attributedString
-        
-        
-        
+        userInfoTextView.attributedText = attributedString        
     }
     
     @IBAction func contactButtonAction(_ sender: Any) {

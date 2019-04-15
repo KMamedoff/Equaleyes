@@ -1,5 +1,5 @@
 //
-//  TeachersCollectionViewController.swift
+//  StudentsCollectionViewController.swift
 //  Equaleyes
 //
 //  Created by Kenan Mamedoff on 15/04/2019.
@@ -8,27 +8,27 @@
 
 import UIKit
 
-class TeachersCollectionViewController: UICollectionViewController {
-
+class StudentsCollectionViewController: UICollectionViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
-        NetworkingService.shared.getRequest(urlString: url) { (feed: [Teacher]) in
+        let url = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/students"
+        NetworkingService.shared.getRequest(urlString: url) { (feed: [Student]) in
             
         }
         
         self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell") // Register Custom Cell
         
         self.collectionView.delaysContentTouches = false // A fix for UIButtons
-
+        
         let flow = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flow.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0) // Top and Bottom insets
     }
     
 }
 
-extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension StudentsCollectionViewController: UICollectionViewDelegateFlowLayout {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -38,7 +38,9 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Custom Cell", for: indexPath) as! CustomCollectionViewCell
         
-        cell.teachersCellTextViewConstraint.isActive = true
+        cell.studentsCellTextViewConstraint.isActive = true
+        cell.studentsCellTextViewConstraint.constant = 0
+        cell.userContactButtonOutlet.isHidden = true
         
         cell.contentView.layer.cornerRadius = 20.0
         cell.contentView.layer.masksToBounds = true
@@ -57,7 +59,7 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width * 0.94, height: 150)
+        return CGSize(width: UIScreen.main.bounds.width * 0.94, height: 110)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout

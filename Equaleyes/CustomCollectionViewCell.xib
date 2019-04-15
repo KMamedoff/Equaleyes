@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="488" height="297"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-nk-WYf" userLabel="Rounded View">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-nk-WYf" userLabel="Rounded Background View">
                         <rect key="frame" x="0.0" y="5" width="488" height="297"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
@@ -28,11 +28,10 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncv-0W-uLH">
-                        <rect key="frame" x="174" y="247" width="140" height="30"/>
+                        <rect key="frame" x="134" y="252" width="220" height="30"/>
                         <color key="backgroundColor" red="0.14380401370000001" green="0.1299412251" blue="0.35688281059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="UCx-N0-lzC"/>
-                            <constraint firstAttribute="width" constant="140" id="v9y-Ih-z1a"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="16"/>
                         <state key="normal" title="Contact">
@@ -55,11 +54,11 @@
                             <constraint firstAttribute="width" constant="16" id="imy-lP-e9d"/>
                         </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Roger Mills" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HN-Ps-uYe" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                        <rect key="frame" x="110" y="20" width="322" height="207"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HN-Ps-uYe" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
+                        <rect key="frame" x="110" y="20" width="322" height="19.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="textColor" red="0.23529779910000001" green="0.2352874875" blue="0.2352944911" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="24"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
@@ -68,10 +67,11 @@
             <constraints>
                 <constraint firstItem="kZu-nk-WYf" firstAttribute="height" secondItem="qUo-hm-KNL" secondAttribute="height" id="1DN-NI-ESn"/>
                 <constraint firstItem="mjb-XS-L51" firstAttribute="leading" secondItem="qUo-hm-KNL" secondAttribute="leading" constant="20" id="29k-vR-dJW"/>
+                <constraint firstAttribute="bottom" secondItem="1HN-Ps-uYe" secondAttribute="bottom" constant="45" id="5VD-I6-Zhi"/>
                 <constraint firstItem="1HN-Ps-uYe" firstAttribute="leading" secondItem="mjb-XS-L51" secondAttribute="trailing" constant="20" id="JJb-tC-xQ8"/>
                 <constraint firstItem="Xhi-BM-BIi" firstAttribute="leading" secondItem="1HN-Ps-uYe" secondAttribute="trailing" constant="20" id="JQh-5j-F3Y"/>
                 <constraint firstItem="kZu-nk-WYf" firstAttribute="centerX" secondItem="lNT-xQ-Ql2" secondAttribute="centerX" id="N1I-Xq-Z4c"/>
-                <constraint firstItem="Ncv-0W-uLH" firstAttribute="top" secondItem="1HN-Ps-uYe" secondAttribute="bottom" constant="20" id="OOF-OU-07J"/>
+                <constraint firstItem="Ncv-0W-uLH" firstAttribute="top" secondItem="1HN-Ps-uYe" secondAttribute="bottom" id="OOF-OU-07J"/>
                 <constraint firstItem="Ncv-0W-uLH" firstAttribute="centerX" secondItem="qUo-hm-KNL" secondAttribute="centerX" id="Of3-w9-Rxi"/>
                 <constraint firstItem="lNT-xQ-Ql2" firstAttribute="bottom" secondItem="Xhi-BM-BIi" secondAttribute="bottom" id="aNa-5O-lez"/>
                 <constraint firstItem="Xhi-BM-BIi" firstAttribute="top" secondItem="lNT-xQ-Ql2" secondAttribute="top" id="eLz-Dv-ScJ"/>
@@ -80,11 +80,20 @@
                 <constraint firstItem="mjb-XS-L51" firstAttribute="top" secondItem="qUo-hm-KNL" secondAttribute="top" constant="20" id="j1K-iS-A7g"/>
                 <constraint firstItem="1HN-Ps-uYe" firstAttribute="top" secondItem="mjb-XS-L51" secondAttribute="top" id="o3t-rP-2YU"/>
                 <constraint firstItem="kZu-nk-WYf" firstAttribute="centerY" secondItem="lNT-xQ-Ql2" secondAttribute="centerY" id="oFk-UD-PQt"/>
-                <constraint firstAttribute="bottom" secondItem="Ncv-0W-uLH" secondAttribute="bottom" constant="20" id="wu4-dP-dvm"/>
+                <constraint firstItem="Ncv-0W-uLH" firstAttribute="width" secondItem="kZu-nk-WYf" secondAttribute="width" multiplier="0.45" id="sqs-G1-UTa"/>
+                <constraint firstAttribute="bottom" secondItem="Ncv-0W-uLH" secondAttribute="bottom" constant="15" id="wu4-dP-dvm"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="lNT-xQ-Ql2"/>
             <size key="customSize" width="488" height="297"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="5VD-I6-Zhi"/>
+                    <exclude reference="OOF-OU-07J"/>
+                </mask>
+            </variation>
             <connections>
+                <outlet property="studentsCellTextViewConstraint" destination="5VD-I6-Zhi" id="THi-ed-JzL"/>
+                <outlet property="teachersCellTextViewConstraint" destination="OOF-OU-07J" id="Xd0-Ll-eHt"/>
                 <outlet property="userContactButtonOutlet" destination="Ncv-0W-uLH" id="SZt-Sq-7jZ"/>
                 <outlet property="userInfoTextView" destination="1HN-Ps-uYe" id="2zj-N5-35X"/>
                 <outlet property="userProfileImageView" destination="mjb-XS-L51" id="nnk-wA-Bcu"/>
