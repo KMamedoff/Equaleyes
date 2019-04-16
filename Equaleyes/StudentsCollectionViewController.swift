@@ -13,10 +13,10 @@ class StudentsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/students"
-        NetworkingService.shared.getRequest(urlString: url) { (feed: [Student]) in
-            
-        }
+//        let url = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/students"
+//        NetworkingService.shared.getRequest(urlString: url) { (feed: [Student]) in
+//            
+//        }
         
         self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell") // Register Custom Cell
         

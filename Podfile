@@ -6,7 +6,9 @@ target 'Equaleyes' do
   use_frameworks!
 
   # Pods for Equaleyes
-
+  pod 'Alamofire', '~> 5.0.0-beta.5'
+  pod 'Kingfisher', '~> 5.0'
+  
   target 'EqualeyesTests' do
     inherit! :search_paths
     # Pods for testing

@@ -7,32 +7,35 @@
 //
 
 import Foundation
+import Alamofire
 
 struct NetworkingService {
     static let shared = NetworkingService()
     
-    func getRequest<T: Decodable>(urlString: String, completion: @escaping ([T]) -> ()) {
-        guard let url = URL(string: urlString) else { return }
-        URLSession.shared.dataTask(with: url) { (data, _, err) in
-            if let err = err {
-                print("Failed to fetch:", err)
+    func fetchData<T: Decodable>(urlString: String, completion: @escaping (T) -> ()) {
+        AF.request(urlString, method: .get).validate(statusCode: 200..<300).response { response in
+            
+            guard response.error == nil else {
+                print("Error calliing on \(urlString)")
                 return
             }
             
-            guard let data = data else { return }
+            guard let data = response.data else {
+                print("There was an error with the data")
+                return
+            }
+            
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
-                let homeFeed = try decoder.decode(Array<T>.self, from: data)
+                let model = try decoder.decode(T.self, from: data)
                 
-                DispatchQueue.main.async {
-                    completion(homeFeed)
-                }
+                completion(model)
             } catch let jsonErr {
-                print("Failed to serialize JSON:", jsonErr)
+                print("Failed to decode, \(jsonErr)")
             }
             
-            }.resume()
+        }
     }
 }

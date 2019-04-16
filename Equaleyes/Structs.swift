@@ -14,9 +14,10 @@ struct Teacher: Decodable {
     let schoolId: Int?
     let teacherClass: String? // Keyword 'class' cannot be used as an identifier
     let imageUrl: String?
+    var schoolName: String?
     
     private enum CodingKeys : String, CodingKey {
-        case id = "id", name = "name", schoolId = "school_id", teacherClass = "class", imageUrl = "image_url" // Did this because keyword 'class' cannot be used as an identifier
+        case id = "id", name = "name", schoolId = "schoolId", teacherClass = "class", imageUrl = "imageUrl" // Did this because keyword 'class' cannot be used as an identifier
     }
 }
 
@@ -25,4 +26,10 @@ struct Student: Decodable {
     let name: String?
     let schoolId: Int?
     let grade: Int?
+}
+
+struct School: Decodable {
+    let id: Int?
+    let name: String?
+    let imageUrl: String?
 }

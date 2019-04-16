@@ -7,16 +7,39 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TeachersCollectionViewController: UICollectionViewController {
-
+    
+    var teacherData = [Teacher]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
-        NetworkingService.shared.getRequest(urlString: url) { (feed: [Teacher]) in
+        let teacherUrla = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
+        NetworkingService.shared.fetchData(urlString: teacherUrla) { (posts: [Teacher]) in
+            self.teacherData = posts
+
+            for (index, _) in self.teacherData.enumerated() {
+                guard let schoolId = self.teacherData[index].schoolId else { return }
+                let schoolUrla = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
+                NetworkingService.shared.fetchData(urlString: schoolUrla) { (posts: School) in
+                    self.teacherData[index].schoolName = posts.name
+                    print(self.teacherData)
+                    
+                    UIView.transition(with: self.collectionView, duration: 0.35, options: .transitionCrossDissolve, animations: {
+                        self.collectionView.reloadData()
+                    })
+                }
+            }
+            
             
         }
+        
+        
+        
+        
+        
         
         self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell") // Register Custom Cell
         
@@ -32,11 +55,35 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return teacherData.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Custom Cell", for: indexPath) as! CustomCollectionViewCell
+        
+        if let imageUrl = self.teacherData[indexPath.row].imageUrl {
+            cell.userProfileImageView.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: "Account Circle")) { result in
+                switch result {
+                case .success(let value):
+                    print(value)
+                case .failure(let error):
+                    print(error)
+                    cell.userProfileImageView.image = UIImage(named: "Account Circle")
+                }
+            }
+        }
+        
+        if let name = self.teacherData[indexPath.row].name {
+            cell.userInfoTextView.text = "\(name)\n"
+        }
+        
+        if let teacherClass = self.teacherData[indexPath.row].teacherClass {
+            cell.userInfoTextView.text += "\(teacherClass)\n"
+        }
+        
+        
+        
+        
         
         cell.teachersCellTextViewConstraint.isActive = true
         

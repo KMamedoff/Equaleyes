@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00857956CD98B22208A09D3613517F1C"
+               BlueprintIdentifier = "BF88BC631A9187796FF9777F7CA166A8"
                BuildableName = "Pods_Equaleyes.framework"
                BlueprintName = "Pods-Equaleyes"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "00857956CD98B22208A09D3613517F1C"
+            BlueprintIdentifier = "BF88BC631A9187796FF9777F7CA166A8"
             BuildableName = "Pods_Equaleyes.framework"
             BlueprintName = "Pods-Equaleyes"
             ReferencedContainer = "container:Pods.xcodeproj">
