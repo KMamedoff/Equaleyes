@@ -12,7 +12,6 @@ import Kingfisher
 class TeachersCollectionViewController: UICollectionViewController {
     
     var teacherData = [Teacher]()
-    var schoolData = [School]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +24,8 @@ class TeachersCollectionViewController: UICollectionViewController {
                 guard let schoolId = self.teacherData[index].schoolId else { return }
                 let schoolUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
                 NetworkingService.shared.fetchData(urlString: schoolUrl) { (posts: School) in
-                    self.teacherData[index].schoolName = posts.name
-                    self.schoolData.append(posts)
-
+                    self.teacherData[index].school = posts
+                    
                     self.collectionView.reloadData()
                 }
                 
@@ -82,32 +80,28 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
         if let teacherClass = self.teacherData[indexPath.row].teacherClass {
             cell.userInfoTextView.text += "Class:      \(teacherClass)\n"
         }
-        
-        if let schoolName = self.teacherData[indexPath.row].schoolName {
+
+        if let schoolName = self.teacherData[indexPath.row].school?.name {
             cell.userInfoTextView.text += "School:   \(schoolName)\n"
         }
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width * 0.94, height: 150)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout
-        collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20.0
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Item Details Segue" {
             let detailsVC = segue.destination as! DetailsViewController
             let indexPath = sender as! IndexPath
+            detailsVC.isTeacher = true
             detailsVC.detailsData = self.teacherData[indexPath.row]
-            
         }
     }
     

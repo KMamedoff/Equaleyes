@@ -89,11 +89,10 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="GLg-0D-GYP"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="Ib4-0c-vdl"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aun-ZG-gZE" userLabel="Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="296" width="207" height="67"/>
+                                <rect key="frame" x="20" y="296" width="207" height="83"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -118,14 +117,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFM-TD-1H6" userLabel="Separator Line">
-                                <rect key="frame" x="20" y="363" width="374" height="2"/>
+                                <rect key="frame" x="20" y="379" width="374" height="2"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="fbL-2K-SZ1"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dm-di-cj3" userLabel="Info Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="365" width="374" height="497"/>
+                                <rect key="frame" x="20" y="381" width="374" height="481"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <mutableString key="text">Title
 Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt</mutableString>
@@ -155,7 +154,9 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <viewLayoutGuide key="safeArea" id="boi-KE-nMg"/>
                     </view>
                     <connections>
-                        <outlet property="InfoImageView" destination="kMu-wQ-sMH" id="EOW-UE-wx5"/>
+                        <outlet property="contactButtonOutlet" destination="2NG-iq-Pcf" id="O05-ce-xjj"/>
+                        <outlet property="imageViewConstraint" destination="GLg-0D-GYP" id="Utq-hk-aP1"/>
+                        <outlet property="infoImageView" destination="kMu-wQ-sMH" id="EOW-UE-wx5"/>
                         <outlet property="longInfoTextView" destination="4dm-di-cj3" id="7cl-9i-JOt"/>
                         <outlet property="shortInfoTextView" destination="Aun-ZG-gZE" id="jCh-Ou-8Tk"/>
                     </connections>
