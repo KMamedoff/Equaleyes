@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,10 +69,69 @@
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Item" id="hh2-wH-vVt"/>
                     <navigationItem key="navigationItem" title="Teachers" id="dh8-si-0oy"/>
+                    <connections>
+                        <segue destination="xsw-FR-myQ" kind="show" identifier="Item Details Segue" id="XdW-fl-WJY"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77h-to-eHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1763.7681159420292" y="-283.25892857142856"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="WoP-rp-FAV">
+            <objects>
+                <viewController title="Details" hidesBottomBarWhenPushed="YES" id="xsw-FR-myQ" customClass="DetailsViewController" customModule="Equaleyes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DCz-f0-G8C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kMu-wQ-sMH">
+                                <rect key="frame" x="0.0" y="88" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="GLg-0D-GYP"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aun-ZG-gZE" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
+                                <rect key="frame" x="20" y="296" width="207" height="67"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NG-iq-Pcf">
+                                <rect key="frame" x="247" y="296" width="147" height="30"/>
+                                <color key="backgroundColor" red="0.14380401370000001" green="0.1299412251" blue="0.35688281059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="U3g-ED-moa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="16"/>
+                                <state key="normal" title="Contact">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kMu-wQ-sMH" firstAttribute="leading" secondItem="boi-KE-nMg" secondAttribute="leading" id="3EN-Cn-Kpz"/>
+                            <constraint firstItem="2NG-iq-Pcf" firstAttribute="leading" secondItem="Aun-ZG-gZE" secondAttribute="trailing" constant="20" id="6a7-18-Gzc"/>
+                            <constraint firstItem="Aun-ZG-gZE" firstAttribute="leading" secondItem="boi-KE-nMg" secondAttribute="leading" constant="20" id="9Hn-ek-GKt"/>
+                            <constraint firstItem="Aun-ZG-gZE" firstAttribute="top" secondItem="kMu-wQ-sMH" secondAttribute="bottom" constant="8" id="NUC-2J-YWk"/>
+                            <constraint firstItem="2NG-iq-Pcf" firstAttribute="top" secondItem="Aun-ZG-gZE" secondAttribute="top" id="Xwk-mb-AhU"/>
+                            <constraint firstItem="kMu-wQ-sMH" firstAttribute="top" secondItem="boi-KE-nMg" secondAttribute="top" id="kbQ-qT-62a"/>
+                            <constraint firstItem="kMu-wQ-sMH" firstAttribute="trailing" secondItem="boi-KE-nMg" secondAttribute="trailing" id="tPe-TW-3fX"/>
+                            <constraint firstItem="boi-KE-nMg" firstAttribute="trailing" secondItem="2NG-iq-Pcf" secondAttribute="trailing" constant="20" id="tQJ-4W-GlJ"/>
+                            <constraint firstItem="Aun-ZG-gZE" firstAttribute="width" secondItem="DCz-f0-G8C" secondAttribute="width" multiplier="0.5" id="ysF-8q-BAz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="boi-KE-nMg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dwl-Kg-5Si" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2586.9565217391305" y="-283.25892857142856"/>
         </scene>
         <!--Students-->
         <scene sceneID="aZd-g6-Rnq">
@@ -84,40 +144,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ymC-UW-EDc" kind="relationship" relationship="rootViewController" id="rWu-DK-gt9"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="547-HS-m9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="945" y="447"/>
-        </scene>
-        <!--Students-->
-        <scene sceneID="oZp-1Q-R8k">
-            <objects>
-                <collectionViewController id="ymC-UW-EDc" customClass="StudentsCollectionViewController" customModule="Equaleyes" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2GI-SU-eVH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.90197288990000002" green="0.90193891530000003" blue="0.90196198230000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sjy-YM-Ffm">
-                            <size key="itemSize" width="414" height="206"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="ymC-UW-EDc" id="N9U-RU-WLn"/>
-                            <outlet property="delegate" destination="ymC-UW-EDc" id="IVb-xE-xph"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="Item" id="2hm-jg-NX3"/>
-                    <navigationItem key="navigationItem" title="Students" id="xPe-an-prH"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DU3-pz-0KJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1764" y="447"/>
         </scene>
     </scenes>
     <resources>

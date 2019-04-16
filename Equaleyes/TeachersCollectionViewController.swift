@@ -26,9 +26,7 @@ class TeachersCollectionViewController: UICollectionViewController {
                 NetworkingService.shared.fetchData(urlString: schoolUrla) { (posts: School) in
                     self.teacherData[index].schoolName = posts.name
                     
-                    UIView.transition(with: self.collectionView, duration: 0.35, options: .transitionCrossDissolve, animations: {
-                        self.collectionView.reloadData()
-                    })
+                    self.collectionView.reloadData()
                 }
             }
         }
@@ -55,8 +53,13 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
         return teacherData.count
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Custom Cell", for: indexPath) as! CustomCollectionViewCell
+        cell.teachersCellTextViewConstraint.isActive = true
         
         if let imageUrl = self.teacherData[indexPath.row].imageUrl {
             cell.userProfileImageView.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: "Account Circle")) { result in
@@ -82,17 +85,6 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
             cell.userInfoTextView.text += "School:   \(schoolName)\n"
         }
         
-        cell.teachersCellTextViewConstraint.isActive = true
-        
-        cell.contentView.layer.cornerRadius = 20.0
-        cell.contentView.layer.masksToBounds = true
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-        cell.layer.shadowRadius = 3.0
-        cell.layer.shadowOpacity = 0.4
-        cell.layer.masksToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
-        
         return cell
     }
     
@@ -108,6 +100,19 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20.0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Item Details Segue" {
+            //            let newViewController = segue.destinationViewController as! pastTripDetailViewController
+            //            let indexPath = sender as! NSIndexPath
+            //            let selectedRow: NSManagedObject = locationsList[indexPath.row] as! NSManagedObject
+            //            newViewController.passedTrip = selectedRow as! Trips
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Item Details Segue", sender: self)
     }
     
 }
