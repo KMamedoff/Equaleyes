@@ -12,29 +12,34 @@ import Kingfisher
 class TeachersCollectionViewController: UICollectionViewController {
     
     var teacherData = [Teacher]()
+    var schoolData = [School]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let teacherUrla = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
-        NetworkingService.shared.fetchData(urlString: teacherUrla) { (posts: [Teacher]) in
+        let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
+        NetworkingService.shared.fetchData(urlString: teacherUrl) { (posts: [Teacher]) in
             self.teacherData = posts
 
             for (index, _) in self.teacherData.enumerated() {
                 guard let schoolId = self.teacherData[index].schoolId else { return }
-                let schoolUrla = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
-                NetworkingService.shared.fetchData(urlString: schoolUrla) { (posts: School) in
+                let schoolUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
+                NetworkingService.shared.fetchData(urlString: schoolUrl) { (posts: School) in
                     self.teacherData[index].schoolName = posts.name
+                    self.schoolData.append(posts)
+
+                    self.collectionView.reloadData()
+                }
+                
+                guard let teacherDescriptionId = self.teacherData[index].id else { return }
+                let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers/\(teacherDescriptionId)"
+                NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { (posts: Teacher) in
+                    self.teacherData[index].description = posts.description
                     
                     self.collectionView.reloadData()
                 }
             }
         }
-        
-        
-        
-        
-        
         
         self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell") // Register Custom Cell
         
@@ -47,8 +52,6 @@ class TeachersCollectionViewController: UICollectionViewController {
 }
 
 extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
-    // MARK: UICollectionViewDataSource
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return teacherData.count
     }
@@ -64,10 +67,9 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
         if let imageUrl = self.teacherData[indexPath.row].imageUrl {
             cell.userProfileImageView.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: "Account Circle")) { result in
                 switch result {
-                case .success(let value):
-                    print(value)
-                case .failure(let error):
-                    print(error)
+                case .success(_):
+                    break
+                case .failure(_):
                     cell.userProfileImageView.image = UIImage(named: "Account Circle")
                 }
             }
@@ -88,8 +90,6 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
         return cell
     }
     
-    // MARK: UICollectionViewDelegateFlowLayout
-    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -104,15 +104,15 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Item Details Segue" {
-            //            let newViewController = segue.destinationViewController as! pastTripDetailViewController
-            //            let indexPath = sender as! NSIndexPath
-            //            let selectedRow: NSManagedObject = locationsList[indexPath.row] as! NSManagedObject
-            //            newViewController.passedTrip = selectedRow as! Trips
+            let detailsVC = segue.destination as! DetailsViewController
+            let indexPath = sender as! IndexPath
+            detailsVC.detailsData = self.teacherData[indexPath.row]
+            
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Item Details Segue", sender: self)
+        performSegue(withIdentifier: "Item Details Segue", sender: indexPath)
     }
     
 }

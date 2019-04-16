@@ -21,6 +21,7 @@
 		7B5C1D922265411E00AF5E3D /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D912265411E00AF5E3D /* Structs.swift */; };
 		7B5C1D942265E48900AF5E3D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D932265E48900AF5E3D /* Extensions.swift */; };
 		7B5C1D962266053600AF5E3D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D952266053600AF5E3D /* DetailsViewController.swift */; };
+		7B5C1D9822660BB800AF5E3D /* imgschool.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D9722660BB700AF5E3D /* imgschool.png */; };
 		CA86914DA7663270661ADEF2 /* Pods_EqualeyesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37B7E3E0529845151FB27A7 /* Pods_EqualeyesTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		7B5C1D912265411E00AF5E3D /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		7B5C1D932265E48900AF5E3D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7B5C1D952266053600AF5E3D /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		7B5C1D9722660BB700AF5E3D /* imgschool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgschool.png; sourceTree = "<group>"; };
 		9B002290E443B8E054E20329 /* Pods-Equaleyes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Equaleyes.debug.xcconfig"; path = "Target Support Files/Pods-Equaleyes/Pods-Equaleyes.debug.xcconfig"; sourceTree = "<group>"; };
 		A908FF8D5E3F0B4AB4C7454A /* Pods_Equaleyes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Equaleyes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37B7E3E0529845151FB27A7 /* Pods_EqualeyesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EqualeyesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 		7B5C1D502264BD4D00AF5E3D /* Equaleyes */ = {
 			isa = PBXGroup;
 			children = (
+				7B5C1D9722660BB700AF5E3D /* imgschool.png */,
 				7B5C1D512264BD4D00AF5E3D /* AppDelegate.swift */,
 				7B5C1D552264BD4D00AF5E3D /* Main.storyboard */,
 				7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */,
@@ -237,6 +240,7 @@
 				7B5C1D592264BD4F00AF5E3D /* Assets.xcassets in Resources */,
 				7B5C1D862264CC9600AF5E3D /* CustomCollectionViewCell.xib in Resources */,
 				7B5C1D572264BD4D00AF5E3D /* Main.storyboard in Resources */,
+				7B5C1D9822660BB800AF5E3D /* imgschool.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
