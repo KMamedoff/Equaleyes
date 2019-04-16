@@ -21,7 +21,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         userProfileImageView.layer.cornerRadius = userProfileImageView.layer.bounds.width / 2
         userProfileImageView.layer.borderWidth = 1.0
-        userProfileImageView.layer.borderColor = UIColor.darkGray.cgColor
+        userProfileImageView.layer.borderColor = UIColor.lightGray.cgColor
         
         userContactButtonOutlet.layer.masksToBounds = true
         userContactButtonOutlet.layer.cornerRadius = 16
@@ -48,7 +48,15 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func contactButtonAction(_ sender: Any) {
-        
+        if let parentVC = self.parentController {
+            
+            parentVC.alert(title: "Contact", message: nil, preferredStyle: .actionSheet, actions: [
+            UIAlertAction(title: "Email", style: .default) { action in },
+            UIAlertAction(title: "Message", style: .default) { action in },
+            UIAlertAction(title: "Call", style: .default) { action in },
+            UIAlertAction(title: "Cancel", style: .cancel) { action in },
+                ])
+        }
     }
     
 }

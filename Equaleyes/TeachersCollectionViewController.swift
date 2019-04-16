@@ -25,15 +25,12 @@ class TeachersCollectionViewController: UICollectionViewController {
                 let schoolUrla = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
                 NetworkingService.shared.fetchData(urlString: schoolUrla) { (posts: School) in
                     self.teacherData[index].schoolName = posts.name
-                    print(self.teacherData)
                     
                     UIView.transition(with: self.collectionView, duration: 0.35, options: .transitionCrossDissolve, animations: {
                         self.collectionView.reloadData()
                     })
                 }
             }
-            
-            
         }
         
         
@@ -78,12 +75,12 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
         }
         
         if let teacherClass = self.teacherData[indexPath.row].teacherClass {
-            cell.userInfoTextView.text += "\(teacherClass)\n"
+            cell.userInfoTextView.text += "Class:      \(teacherClass)\n"
         }
         
-        
-        
-        
+        if let schoolName = self.teacherData[indexPath.row].schoolName {
+            cell.userInfoTextView.text += "School:   \(schoolName)\n"
+        }
         
         cell.teachersCellTextViewConstraint.isActive = true
         

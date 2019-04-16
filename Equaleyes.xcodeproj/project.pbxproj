@@ -18,9 +18,9 @@
 		7B5C1D882264CF0200AF5E3D /* TeachersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */; };
 		7B5C1D8A2264E98700AF5E3D /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D892264E98700AF5E3D /* IBDesignables.swift */; };
 		7B5C1D8C226505F800AF5E3D /* StudentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D8B226505F800AF5E3D /* StudentsCollectionViewController.swift */; };
-		7B5C1D8E22653C5000AF5E3D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D8D22653C5000AF5E3D /* Extensions.swift */; };
 		7B5C1D902265408000AF5E3D /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D8F2265408000AF5E3D /* Services.swift */; };
 		7B5C1D922265411E00AF5E3D /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D912265411E00AF5E3D /* Structs.swift */; };
+		7B5C1D942265E48900AF5E3D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D932265E48900AF5E3D /* Extensions.swift */; };
 		CA86914DA7663270661ADEF2 /* Pods_EqualeyesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37B7E3E0529845151FB27A7 /* Pods_EqualeyesTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,9 +52,9 @@
 		7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachersCollectionViewController.swift; sourceTree = "<group>"; };
 		7B5C1D892264E98700AF5E3D /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		7B5C1D8B226505F800AF5E3D /* StudentsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsCollectionViewController.swift; sourceTree = "<group>"; };
-		7B5C1D8D22653C5000AF5E3D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7B5C1D8F2265408000AF5E3D /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		7B5C1D912265411E00AF5E3D /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		7B5C1D932265E48900AF5E3D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9B002290E443B8E054E20329 /* Pods-Equaleyes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Equaleyes.debug.xcconfig"; path = "Target Support Files/Pods-Equaleyes/Pods-Equaleyes.debug.xcconfig"; sourceTree = "<group>"; };
 		A908FF8D5E3F0B4AB4C7454A /* Pods_Equaleyes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Equaleyes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37B7E3E0529845151FB27A7 /* Pods_EqualeyesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EqualeyesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +110,7 @@
 				7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */,
 				7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */,
 				7B5C1D892264E98700AF5E3D /* IBDesignables.swift */,
-				7B5C1D8D22653C5000AF5E3D /* Extensions.swift */,
+				7B5C1D932265E48900AF5E3D /* Extensions.swift */,
 				7B5C1D8F2265408000AF5E3D /* Services.swift */,
 				7B5C1D912265411E00AF5E3D /* Structs.swift */,
 				7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */,
@@ -327,8 +327,8 @@
 			files = (
 				7B5C1D922265411E00AF5E3D /* Structs.swift in Sources */,
 				7B5C1D522264BD4D00AF5E3D /* AppDelegate.swift in Sources */,
-				7B5C1D8E22653C5000AF5E3D /* Extensions.swift in Sources */,
 				7B5C1D882264CF0200AF5E3D /* TeachersCollectionViewController.swift in Sources */,
+				7B5C1D942265E48900AF5E3D /* Extensions.swift in Sources */,
 				7B5C1D902265408000AF5E3D /* Services.swift in Sources */,
 				7B5C1D8A2264E98700AF5E3D /* IBDesignables.swift in Sources */,
 				7B5C1D8C226505F800AF5E3D /* StudentsCollectionViewController.swift in Sources */,
