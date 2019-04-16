@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIView {
     var parentController: UIViewController? {
@@ -17,6 +18,7 @@ extension UIView {
                 return viewController
             }
         }
+        
         return nil
     }
 }
@@ -26,5 +28,30 @@ extension UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         actions.forEach { alertController.addAction($0) }
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension UIViewController {
+    func attributedString(string: String, fontName: String, fontSize: CGFloat, textColor: UIColor) -> NSMutableAttributedString {
+        let attribute: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: fontName, size: fontSize)!,
+            .foregroundColor: textColor
+        ]
+        
+        let attributedString = NSMutableAttributedString(string: string, attributes: attribute)
+        
+        return attributedString
+    }
+}
+
+extension UIImageView {
+    func setImageWithKingfisher(with urlString: String, completion: @escaping (Result<RetrieveImageResult, KingfisherError>) -> ()) {
+        guard let url = URL.init(string: urlString) else { return }
+        let resource = ImageResource(downloadURL: url, cacheKey: urlString)
+        var kf = self.kf
+        kf.indicatorType = .activity
+        self.kf.setImage(with: resource) { result in
+            completion(result)
+        }
     }
 }

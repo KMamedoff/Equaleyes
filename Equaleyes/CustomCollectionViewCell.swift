@@ -36,27 +36,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         userProfileImageView.layer.cornerRadius = userProfileImageView.layer.bounds.width / 2
         userProfileImageView.layer.borderWidth = 1.0
-        userProfileImageView.layer.borderColor = UIColor.lightGray.cgColor
-                
-        let usernameTextAttributes: [NSAttributedString.Key: Any] = [
-            .font : UIFont(name: "AvenirNextCondensed-Medium", size: 26)!,
-            .foregroundColor: UIColor.darkGray
-        ]
-        let classTextAttributes: [NSAttributedString.Key: Any] = [
-            .font : UIFont(name: "AvenirNextCondensed-Medium", size: 14)!,
-            .foregroundColor: UIColor.darkGray
-        ]
-        let schoolTextAttributes: [NSAttributedString.Key: Any] = [
-            .font : UIFont(name: "AvenirNextCondensed-Medium", size: 14)!,
-            .foregroundColor: UIColor.darkGray
-        ]
-
-        let attributedString = NSMutableAttributedString()
-        attributedString.append(NSAttributedString(string: "Roger Mills\n", attributes: usernameTextAttributes))
-        attributedString.append(NSAttributedString(string: "Class:    10\n", attributes: classTextAttributes))
-        attributedString.append(NSAttributedString(string: "School:   Cavour Ave\n", attributes: schoolTextAttributes))
-
-        userInfoTextView.attributedText = attributedString        
+        userProfileImageView.layer.borderColor = UIColor.lightGray.cgColor      
     }
     
     @IBAction func contactButtonAction(_ sender: Any) {

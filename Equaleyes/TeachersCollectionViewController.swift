@@ -63,7 +63,7 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
         cell.teachersCellTextViewConstraint.isActive = true
         
         if let imageUrl = self.teacherData[indexPath.row].imageUrl {
-            cell.userProfileImageView.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: "Account Circle")) { result in
+            cell.userProfileImageView.setImageWithKingfisher(with: imageUrl) { result in
                 switch result {
                 case .success(_):
                     break
@@ -73,17 +73,21 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
             }
         }
         
+        let mutableAttributedString = NSMutableAttributedString()
+
         if let name = self.teacherData[indexPath.row].name {
-            cell.userInfoTextView.text = "\(name)\n"
+            mutableAttributedString.append(attributedString(string: "\(name)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
         }
         
         if let teacherClass = self.teacherData[indexPath.row].teacherClass {
-            cell.userInfoTextView.text += "Class:      \(teacherClass)\n"
+            mutableAttributedString.append(attributedString(string: "Class:      \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
 
         if let schoolName = self.teacherData[indexPath.row].school?.name {
-            cell.userInfoTextView.text += "School:   \(schoolName)\n"
+            mutableAttributedString.append(attributedString(string: "School:   \(schoolName)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
+        
+        cell.userInfoTextView.attributedText = mutableAttributedString
         
         return cell
     }

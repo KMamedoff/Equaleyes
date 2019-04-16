@@ -29,15 +29,20 @@ class DetailsViewController: UIViewController {
         
         let detailsDataCasted = detailsData as! Teacher
         
-        
         if let imageUrl = detailsDataCasted.school?.imageUrl {
-            infoImageView.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: "Account Circle")) { result in
+            
+            infoImageView.setImageWithKingfisher(with: imageUrl) { result in
                 switch result {
                 case .success(let value):
                     let imageViewSize = CGSize(width: self.infoImageView.frame.width, height: self.infoImageView.frame.height)
                     let imageAspectRatio = value.image.size.height / value.image.size.width
                     
                     self.imageViewConstraint.constant = imageViewSize.width * imageAspectRatio
+                    
+                    if self.imageViewConstraint.constant > UIScreen.main.bounds.height * 0.4 {
+                        self.imageViewConstraint.constant = UIScreen.main.bounds.height * 0.4
+                    }
+                    
                     UIView.animate(withDuration: 0.2) {
                         self.view.layoutIfNeeded()
                     }
@@ -46,19 +51,22 @@ class DetailsViewController: UIViewController {
                 }
             }
         }
-        /*
-        if let name = self.teacherData[indexPath.row].name {
-            cell.userInfoTextView.text = "\(name)\n"
+
+        if let name = detailsDataCasted.name {
+            shortInfoTextView.text = "\(name)\n"
         }
         
-        if let teacherClass = self.teacherData[indexPath.row].teacherClass {
-            cell.userInfoTextView.text += "Class:      \(teacherClass)\n"
+        if let teacherClass = detailsDataCasted.teacherClass {
+            shortInfoTextView.text += "Class:      \(teacherClass)\n"
         }
         
-        if let schoolName = self.teacherData[indexPath.row].schoolName {
-            cell.userInfoTextView.text += "School:   \(schoolName)\n"
+        if let schoolName = detailsDataCasted.school?.name {
+            shortInfoTextView.text += "School:   \(schoolName)\n"
         }
-*/
+        
+        if let description = detailsDataCasted.description {
+            longInfoTextView.text = "About\n" + description
+        }
     }
     
     @IBAction func contactButtonAction(_ sender: UIButton) {
