@@ -27,6 +27,17 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        customizeUIElements()
+        selectTeacherOrStudent()
+    }
+    
+    private func customizeUIElements() {
+        self.title = "details_title".localized()
+        
+        contactButtonOutlet.setTitle("contact_button_title".localized(), for: .normal)
+    }
+    
+    private func selectTeacherOrStudent() {
         if isTeacher {
             contactButtonOutlet.isHidden = false
             detailsDataTeacher = detailsData as? Teacher
@@ -40,7 +51,7 @@ class DetailsViewController: UIViewController {
         }
     }
     
-    func resizeImageView(_ value: RetrieveImageResult) {
+    private func resizeImageView(_ value: RetrieveImageResult) {
         let imageViewSize = CGSize(width: self.infoImageView.frame.width, height: self.infoImageView.frame.height)
         let imageAspectRatio = value.image.size.height / value.image.size.width
         
@@ -55,7 +66,7 @@ class DetailsViewController: UIViewController {
         }
     }
     
-    func fillTeacherInfo() {
+    private func fillTeacherInfo() {
         // Image View
         if let imageUrl = detailsDataTeacher?.school?.imageUrl {
             infoImageView.setImageWithKingfisher(with: imageUrl) { result in
@@ -93,11 +104,11 @@ class DetailsViewController: UIViewController {
         longInfoTextView.attributedText = longInfoMutableAttributedString
     }
     
-    func fillStudentInfo() {
+    private func fillStudentInfo() {
         
     }
     
     @IBAction func contactButtonAction(_ sender: UIButton) {
-        
+        self.contactAlert()
     }
 }

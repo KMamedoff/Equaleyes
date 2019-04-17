@@ -15,9 +15,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var teachersCellTextViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var userInfoTextView: UITextViewFixed!
+    @IBOutlet weak var contactButtonOutlet: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        contactButtonOutlet.setTitle("contact_button_title".localized(), for: .normal)
         
         self.backgroundColor = UIColor.clear
         
@@ -41,12 +44,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBAction func contactButtonAction(_ sender: Any) {
         if let parentVC = self.parentController {
-            parentVC.alert(title: "Contact", message: nil, preferredStyle: .actionSheet, actions: [
-            UIAlertAction(title: "Email", style: .default) { action in },
-            UIAlertAction(title: "Message", style: .default) { action in },
-            UIAlertAction(title: "Call", style: .default) { action in },
-            UIAlertAction(title: "Cancel", style: .cancel) { action in },
-                ])
+            parentVC.contactAlert()
         }
     }
     

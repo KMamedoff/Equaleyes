@@ -36,9 +36,16 @@ extension UIViewController {
         actions.forEach { alertController.addAction($0) }
         self.present(alertController, animated: true, completion: nil)
     }
-}
-
-extension UIViewController {
+    
+    func contactAlert() {
+        self.alert(title: "contact_button_title".localized(), message: nil, preferredStyle: .actionSheet, actions: [
+            UIAlertAction(title: "contact_email".localized(), style: .default) { action in },
+            UIAlertAction(title: "contact_message".localized(), style: .default) { action in },
+            UIAlertAction(title: "contact_call".localized(), style: .default) { action in },
+            UIAlertAction(title: "contact_cancel".localized(), style: .cancel) { action in },
+            ])
+    }
+    
     func attributedString(string: String, fontName: String, fontSize: CGFloat, textColor: UIColor) -> NSMutableAttributedString {
         let attribute: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: fontName, size: fontSize)!,

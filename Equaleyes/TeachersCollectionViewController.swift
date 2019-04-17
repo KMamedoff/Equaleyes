@@ -11,7 +11,7 @@ import Kingfisher
 
 class TeachersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var teacherData = [Teacher]()
+    private var teacherData = [Teacher]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
                 NetworkingService.shared.fetchData(urlString: schoolUrl) { (posts: School) in
                     self.teacherData[index].school = posts
                     
-                    self.collectionView.reloadData()
+                    self.reloadWithAnimation()
                 }
                 
                 guard let teacherDescriptionId = self.teacherData[index].id else { return }
@@ -34,7 +34,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
                 NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { (posts: Teacher) in
                     self.teacherData[index].description = posts.description
                     
-                    self.collectionView.reloadData()
+                    self.reloadWithAnimation()
                 }
             }
         }
@@ -49,6 +49,12 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
 
         let flow = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flow.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0) // Top and Bottom insets
+    }
+    
+    private func reloadWithAnimation() {
+        UIView.transition(with: self.collectionView, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            self.collectionView.reloadData()
+        })
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -67,7 +73,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
             cell.userProfileImageView.setImageWithKingfisher(with: imageUrl) { result in
                 switch result {
                 case .success(_):
-                    break
+                    print()
                 case .failure(_):
                     cell.userProfileImageView.image = UIImage(named: "Account Circle")
                 }

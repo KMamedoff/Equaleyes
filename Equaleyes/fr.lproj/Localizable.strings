@@ -12,5 +12,9 @@
 "class" = "Classe";
 "school" = "École";
 "grade" = "Degré";
-"contact_button_title" = "Contact";
+"contact_button_title" = "Contacter";
+"contact_email" = "Email";
+"contact_message" = "Message";
+"contact_call" = "Appel Téléphonique";
+"contact_cancel" = "Annuler";
 "details_about_title" = "Sur";

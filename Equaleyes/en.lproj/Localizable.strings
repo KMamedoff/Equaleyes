@@ -13,4 +13,8 @@
 "school" = "School";
 "grade" = "Grade";
 "contact_button_title" = "Contact";
+"contact_email" = "Email";
+"contact_message" = "Message";
+"contact_call" = "Call";
+"contact_cancel" = "Cancel";
 "details_about_title" = "About";
