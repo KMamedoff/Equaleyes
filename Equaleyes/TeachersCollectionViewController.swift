@@ -28,9 +28,10 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         
         self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell")
         self.collectionView.delaysContentTouches = false // A "fix" for Contact button
-        
+        self.collectionView.contentInsetAdjustmentBehavior = .always
+
         let flow = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        flow.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        flow.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     private func networkingAndJSON() {
@@ -85,10 +86,6 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         return teacherData.count
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionView?.collectionViewLayout.invalidateLayout()
-    }
-    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Custom Cell", for: indexPath) as! CustomCollectionViewCell
         cell.teachersCellTextViewConstraint.isActive = true
@@ -97,9 +94,9 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
             cell.userProfileImageView.setImageWithKingfisher(with: imageUrl) { result in
                 switch result {
                 case .success(_):
-                    print()
+                    break
                 case .failure(_):
-                    cell.userProfileImageView.image = UIImage(named: "Account Circle")
+                    cell.userProfileImageView.image = UIImage(named: "No Image")
                 }
             }
         }
@@ -119,12 +116,25 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         }
         
         cell.userInfoTextView.attributedText = mutableAttributedString
-        
+
         return cell
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width * 0.94, height: 150)
+        if UIDevice.current.orientation.isLandscape && UIScreen.main.bounds.width >= 667.0 {
+            let window = UIApplication.shared.keyWindow
+            let leftPadding = window!.safeAreaInsets.left
+            let rightPadding = window!.safeAreaInsets.left
+            
+
+            return CGSize(width: (UIScreen.main.bounds.width - leftPadding - rightPadding - 34) / 2, height: 150)
+        } else {
+            return CGSize(width: UIScreen.main.bounds.width - 20, height: 150)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

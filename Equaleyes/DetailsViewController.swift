@@ -72,10 +72,9 @@ class DetailsViewController: UIViewController {
             infoImageView.setImageWithKingfisher(with: imageUrl) { result in
                 switch result {
                 case .success(let value):
-                    print()
                     self.resizeImageView(value)
                 case .failure(_):
-                    self.infoImageView.image = UIImage(named: "Account Circle")
+                    self.infoImageView.image = UIImage(named: "No Image")
                 }
             }
         }
@@ -96,10 +95,11 @@ class DetailsViewController: UIViewController {
         shortInfoTextView.attributedText = shortInfoMutableAttributedString
         
         // Long Info
-        longInfoMutableAttributedString.append(attributedString(string: "details_about_title".localized() + "\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
-        
         if let description = detailsDataTeacher?.description {
-            longInfoMutableAttributedString.append(attributedString(string: "\(description)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            if description != "" {
+                longInfoMutableAttributedString.append(attributedString(string: "details_about_title".localized() + "\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+                longInfoMutableAttributedString.append(attributedString(string: "\(description)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            }
         }
         
         longInfoTextView.attributedText = longInfoMutableAttributedString
