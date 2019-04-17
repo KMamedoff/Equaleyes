@@ -38,19 +38,25 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (posts: [Teacher]) in
             self.teacherData = posts
             
+            self.reloadWithAnimation()
+            
             for (index, _) in self.teacherData.enumerated() {
+                guard let teacherId = self.teacherData[index].id else { return }
+                let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers/\(teacherId)"
+                NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { [unowned self] (posts: Teacher) in
+                    self.teacherData[index].description = posts.description
+                    
+                }
+                
                 guard let schoolId = self.teacherData[index].schoolId else { return }
                 let schoolUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
                 NetworkingService.shared.fetchData(urlString: schoolUrl) { [unowned self] (posts: School) in
                     self.teacherData[index].school = posts
                     
-                    guard let teacherDescriptionId = self.teacherData[index].id else { return }
-                    let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers/\(teacherDescriptionId)"
-                    NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { [unowned self] (posts: Teacher) in
-                        self.teacherData[index].description = posts.description
-                        
-                        if index == self.teacherData.count - 1 { self.reloadWithAnimation() }
-                    }
+                    self.collectionView.performBatchUpdates({
+                        let indexPath = IndexPath(row: index, section: 0)
+                        self.collectionView.reloadItems(at: [indexPath])
+                    }, completion: nil)
                 }
             }
         }

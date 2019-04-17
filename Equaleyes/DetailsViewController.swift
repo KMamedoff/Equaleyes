@@ -11,7 +11,7 @@ import Kingfisher
 
 class DetailsViewController: UIViewController {
 
-    @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var portraitImageViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var shortInfoTextView: UITextViewFixed!
     @IBOutlet weak var contactButtonOutlet: UIButton!
@@ -55,10 +55,10 @@ class DetailsViewController: UIViewController {
         let imageViewSize = CGSize(width: self.infoImageView.frame.width, height: self.infoImageView.frame.height)
         let imageAspectRatio = value.image.size.height / value.image.size.width
         
-        self.imageViewConstraint.constant = imageViewSize.width * imageAspectRatio
+        self.portraitImageViewConstraint.constant = imageViewSize.width * imageAspectRatio
         
-        if self.imageViewConstraint.constant > UIScreen.main.bounds.height * 0.4 {
-            self.imageViewConstraint.constant = UIScreen.main.bounds.height * 0.4
+        if self.portraitImageViewConstraint.constant > UIScreen.main.bounds.height * 0.5 {
+            self.portraitImageViewConstraint.constant = UIScreen.main.bounds.height * 0.5
         }
         
         UIView.animate(withDuration: 0.1) {
@@ -72,6 +72,7 @@ class DetailsViewController: UIViewController {
             infoImageView.setImageWithKingfisher(with: imageUrl) { result in
                 switch result {
                 case .success(let value):
+                    print()
                     self.resizeImageView(value)
                 case .failure(_):
                     self.infoImageView.image = UIImage(named: "Account Circle")
