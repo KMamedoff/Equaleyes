@@ -43,18 +43,15 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
                 NetworkingService.shared.fetchData(urlString: schoolUrl) { [unowned self] (posts: School) in
                     self.teacherData[index].school = posts
                     
-                    if index == self.teacherData.count - 1 {
-                        self.reloadWithAnimation()
+                    guard let teacherDescriptionId = self.teacherData[index].id else { return }
+                    let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers/\(teacherDescriptionId)"
+                    NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { [unowned self] (posts: Teacher) in
+                        self.teacherData[index].description = posts.description
+                        
+                        if index == self.teacherData.count - 1 { self.reloadWithAnimation() }
                     }
                 }
-                
-                guard let teacherDescriptionId = self.teacherData[index].id else { return }
-                let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers/\(teacherDescriptionId)"
-                NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { [unowned self] (posts: Teacher) in
-                    self.teacherData[index].description = posts.description
-                }
             }
-            
         }
     }
     
