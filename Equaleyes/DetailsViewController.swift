@@ -17,56 +17,84 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var contactButtonOutlet: UIButton!
     @IBOutlet weak var longInfoTextView: UITextViewFixed!
     
-    var isTeacher = false
-    var detailsData: Any?
+    private var shortInfoMutableAttributedString = NSMutableAttributedString()
+    private var longInfoMutableAttributedString = NSMutableAttributedString()
+    private var detailsDataTeacher: Teacher?
+    private var detailsDataStudent: Student?
+    public var isTeacher = false
+    public var detailsData: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if isTeacher {
             contactButtonOutlet.isHidden = false
+            detailsDataTeacher = detailsData as? Teacher
+            
+            fillTeacherInfo()
+        } else {
+            contactButtonOutlet.isHidden = true
+            detailsDataStudent = detailsData as? Student
+            
+            fillStudentInfo()
+        }
+    }
+    
+    func resizeImageView(_ value: RetrieveImageResult) {
+        let imageViewSize = CGSize(width: self.infoImageView.frame.width, height: self.infoImageView.frame.height)
+        let imageAspectRatio = value.image.size.height / value.image.size.width
+        
+        self.imageViewConstraint.constant = imageViewSize.width * imageAspectRatio
+        
+        if self.imageViewConstraint.constant > UIScreen.main.bounds.height * 0.4 {
+            self.imageViewConstraint.constant = UIScreen.main.bounds.height * 0.4
         }
         
-        let detailsDataCasted = detailsData as! Teacher
-        
-        if let imageUrl = detailsDataCasted.school?.imageUrl {
-            
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func fillTeacherInfo() {
+        // Image View
+        if let imageUrl = detailsDataTeacher?.school?.imageUrl {
             infoImageView.setImageWithKingfisher(with: imageUrl) { result in
                 switch result {
                 case .success(let value):
-                    let imageViewSize = CGSize(width: self.infoImageView.frame.width, height: self.infoImageView.frame.height)
-                    let imageAspectRatio = value.image.size.height / value.image.size.width
-                    
-                    self.imageViewConstraint.constant = imageViewSize.width * imageAspectRatio
-                    
-                    if self.imageViewConstraint.constant > UIScreen.main.bounds.height * 0.4 {
-                        self.imageViewConstraint.constant = UIScreen.main.bounds.height * 0.4
-                    }
-                    
-                    UIView.animate(withDuration: 0.2) {
-                        self.view.layoutIfNeeded()
-                    }
+                    self.resizeImageView(value)
                 case .failure(_):
                     self.infoImageView.image = UIImage(named: "Account Circle")
                 }
             }
         }
-
-        if let name = detailsDataCasted.name {
-            shortInfoTextView.text = "\(name)\n"
+        
+        // Short Info
+        if let name = detailsDataTeacher?.name {
+            shortInfoMutableAttributedString.append(attributedString(string: "\(name)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
         }
         
-        if let teacherClass = detailsDataCasted.teacherClass {
-            shortInfoTextView.text += "Class:      \(teacherClass)\n"
+        if let teacherClass = detailsDataTeacher?.teacherClass {
+            shortInfoMutableAttributedString.append(attributedString(string: "Class:      \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
-        if let schoolName = detailsDataCasted.school?.name {
-            shortInfoTextView.text += "School:   \(schoolName)\n"
+        if let schoolName = detailsDataTeacher?.school?.name {
+            shortInfoMutableAttributedString.append(attributedString(string: "School:   \(schoolName)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
-        if let description = detailsDataCasted.description {
-            longInfoTextView.text = "About\n" + description
+        shortInfoTextView.attributedText = shortInfoMutableAttributedString
+        
+        // Long Info
+        longInfoMutableAttributedString.append(attributedString(string: "About\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+        
+        if let description = detailsDataTeacher?.description {
+            longInfoMutableAttributedString.append(attributedString(string: "School:   \(description)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
+        
+        longInfoTextView.attributedText = longInfoMutableAttributedString
+    }
+    
+    func fillStudentInfo() {
+        
     }
     
     @IBAction func contactButtonAction(_ sender: UIButton) {

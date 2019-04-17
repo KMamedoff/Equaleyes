@@ -69,7 +69,7 @@
 		7B5C1D932265E48900AF5E3D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7B5C1D952266053600AF5E3D /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		7BDCBB67226720F5009CA101 /* Equaleyes Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Equaleyes Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BDCBB68226720F5009CA101 /* Equaleyes copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Equaleyes copy-Info.plist"; path = "/Users/mamedoff/Desktop/Projects/Equaleyes/Equaleyes copy-Info.plist"; sourceTree = "<absolute>"; };
+		7BDCBB68226720F5009CA101 /* Info-Dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Dev.plist"; path = "/Users/mamedoff/Desktop/Projects/Equaleyes/Info-Dev.plist"; sourceTree = "<absolute>"; };
 		9B002290E443B8E054E20329 /* Pods-Equaleyes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Equaleyes.debug.xcconfig"; path = "Target Support Files/Pods-Equaleyes/Pods-Equaleyes.debug.xcconfig"; sourceTree = "<group>"; };
 		A908FF8D5E3F0B4AB4C7454A /* Pods_Equaleyes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Equaleyes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37B7E3E0529845151FB27A7 /* Pods_EqualeyesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EqualeyesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +111,6 @@
 				7B5C1D4F2264BD4D00AF5E3D /* Products */,
 				8AA1693E6E838A314464F4C8 /* Pods */,
 				B17FD1DFFB76CC018EB194D2 /* Frameworks */,
-				7BDCBB68226720F5009CA101 /* Equaleyes copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +140,7 @@
 				7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */,
 				7B5C1D5A2264BD4F00AF5E3D /* LaunchScreen.storyboard */,
 				7B5C1D5D2264BD4F00AF5E3D /* Info.plist */,
+				7BDCBB68226720F5009CA101 /* Info-Dev.plist */,
 			);
 			path = Equaleyes;
 			sourceTree = "<group>";
@@ -695,10 +695,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B002290E443B8E054E20329 /* Pods-Equaleyes.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Dev";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NM48V535H;
-				INFOPLIST_FILE = "Equaleyes copy-Info.plist";
+				INFOPLIST_FILE = "Info-Dev.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -716,10 +716,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4847D970F11CA70B3FF330B4 /* Pods-Equaleyes.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Dev";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NM48V535H;
-				INFOPLIST_FILE = "Equaleyes copy-Info.plist";
+				INFOPLIST_FILE = "Info-Dev.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

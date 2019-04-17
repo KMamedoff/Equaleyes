@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
         environment = .production
         #endif
-        print(environment)
         
         return true
     }

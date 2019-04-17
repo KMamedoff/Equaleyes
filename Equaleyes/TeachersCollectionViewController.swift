@@ -39,6 +39,10 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
             }
         }
         
+        if environment == .development {
+            self.title = "Teacher DEV"
+        }
+        
         self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell") // Register Custom Cell
         
         self.collectionView.delaysContentTouches = false // A fix for UIButtons

@@ -92,7 +92,7 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aun-ZG-gZE" userLabel="Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="96" width="207" height="83"/>
+                                <rect key="frame" x="20" y="96" width="207" height="67"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -117,14 +117,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFM-TD-1H6" userLabel="Separator Line">
-                                <rect key="frame" x="20" y="179" width="374" height="2"/>
+                                <rect key="frame" x="20" y="163" width="374" height="2"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="fbL-2K-SZ1"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dm-di-cj3" userLabel="Info Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="189" width="374" height="673"/>
+                                <rect key="frame" x="20" y="173" width="374" height="689"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -138,10 +138,10 @@
                             <constraint firstItem="boi-KE-nMg" firstAttribute="bottom" secondItem="4dm-di-cj3" secondAttribute="bottom" id="Asm-oq-hLM"/>
                             <constraint firstItem="CFM-TD-1H6" firstAttribute="trailing" secondItem="2NG-iq-Pcf" secondAttribute="trailing" id="Gyd-3k-Tg6"/>
                             <constraint firstItem="Aun-ZG-gZE" firstAttribute="top" secondItem="kMu-wQ-sMH" secondAttribute="bottom" constant="8" id="NUC-2J-YWk"/>
+                            <constraint firstItem="2NG-iq-Pcf" firstAttribute="top" secondItem="kMu-wQ-sMH" secondAttribute="bottom" constant="8" id="Pns-ce-NCz"/>
                             <constraint firstItem="boi-KE-nMg" firstAttribute="trailing" secondItem="4dm-di-cj3" secondAttribute="trailing" constant="20" id="SFN-07-luE"/>
                             <constraint firstItem="4dm-di-cj3" firstAttribute="top" secondItem="CFM-TD-1H6" secondAttribute="bottom" constant="8" id="W9J-MR-aXG"/>
                             <constraint firstItem="CFM-TD-1H6" firstAttribute="leading" secondItem="Aun-ZG-gZE" secondAttribute="leading" id="WLm-6i-r1S"/>
-                            <constraint firstItem="2NG-iq-Pcf" firstAttribute="top" secondItem="Aun-ZG-gZE" secondAttribute="top" id="Xwk-mb-AhU"/>
                             <constraint firstItem="CFM-TD-1H6" firstAttribute="top" secondItem="Aun-ZG-gZE" secondAttribute="bottom" id="aHN-1z-dJu"/>
                             <constraint firstItem="4dm-di-cj3" firstAttribute="leading" secondItem="boi-KE-nMg" secondAttribute="leading" constant="20" id="hr8-C1-KeJ"/>
                             <constraint firstItem="kMu-wQ-sMH" firstAttribute="top" secondItem="boi-KE-nMg" secondAttribute="top" id="kbQ-qT-62a"/>
