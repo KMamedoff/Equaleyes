@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Equaleyes
+
+  Created by Kenan Mamedoff on 17/04/2019.
+  Copyright © 2019 Kenan Mamedoff. All rights reserved.
+*/
+
+"teacher_title" = "Professeurs";
+"student_title" = "Étudiantes";
+"details_title" = "Détails";
+"class" = "Classe";
+"school" = "École";
+"grade" = "Degré";
+"contact_button_title" = "Contact";
+"details_about_title" = "Sur";

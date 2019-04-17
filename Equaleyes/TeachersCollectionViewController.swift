@@ -40,7 +40,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         }
         
         if environment == .development {
-            self.title = "Teacher DEV"
+            self.title = "teacher_title".localized() + " DEV"
         }
         
         self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell") // Register Custom Cell
@@ -81,11 +81,11 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         }
         
         if let teacherClass = self.teacherData[indexPath.row].teacherClass {
-            mutableAttributedString.append(attributedString(string: "Class:      \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            mutableAttributedString.append(attributedString(string: "class".localized() + ": \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         if let schoolName = self.teacherData[indexPath.row].school?.name {
-            mutableAttributedString.append(attributedString(string: "School:   \(schoolName)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            mutableAttributedString.append(attributedString(string: "school".localized() + ": \(schoolName)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         cell.userInfoTextView.attributedText = mutableAttributedString

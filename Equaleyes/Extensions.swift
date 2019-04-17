@@ -9,6 +9,13 @@
 import UIKit
 import Kingfisher
 
+extension String {
+    func localized(withComment comment: String? = nil) -> String {
+        return NSLocalizedString(self, comment: comment ?? "")
+    }
+    
+}
+
 extension UIView {
     var parentController: UIViewController? {
         var parentResponder: UIResponder? = self

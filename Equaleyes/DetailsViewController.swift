@@ -74,20 +74,20 @@ class DetailsViewController: UIViewController {
         }
         
         if let teacherClass = detailsDataTeacher?.teacherClass {
-            shortInfoMutableAttributedString.append(attributedString(string: "Class:      \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append(attributedString(string: "class".localized() + ": \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         if let schoolName = detailsDataTeacher?.school?.name {
-            shortInfoMutableAttributedString.append(attributedString(string: "School:   \(schoolName)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append(attributedString(string: "school".localized() + ": \(schoolName)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         shortInfoTextView.attributedText = shortInfoMutableAttributedString
         
         // Long Info
-        longInfoMutableAttributedString.append(attributedString(string: "About\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+        longInfoMutableAttributedString.append(attributedString(string: "details_about_title".localized() + "\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
         
         if let description = detailsDataTeacher?.description {
-            longInfoMutableAttributedString.append(attributedString(string: "School:   \(description)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            longInfoMutableAttributedString.append(attributedString(string: "\(description)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         longInfoTextView.attributedText = longInfoMutableAttributedString
