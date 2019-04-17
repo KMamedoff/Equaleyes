@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class TeachersCollectionViewController: UICollectionViewController {
+class TeachersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var teacherData = [Teacher]()
     
@@ -47,9 +47,6 @@ class TeachersCollectionViewController: UICollectionViewController {
         flow.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0) // Top and Bottom insets
     }
     
-}
-
-extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return teacherData.count
     }
@@ -74,7 +71,7 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
         }
         
         let mutableAttributedString = NSMutableAttributedString()
-
+        
         if let name = self.teacherData[indexPath.row].name {
             mutableAttributedString.append(attributedString(string: "\(name)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
         }
@@ -82,7 +79,7 @@ extension TeachersCollectionViewController: UICollectionViewDelegateFlowLayout {
         if let teacherClass = self.teacherData[indexPath.row].teacherClass {
             mutableAttributedString.append(attributedString(string: "Class:      \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
-
+        
         if let schoolName = self.teacherData[indexPath.row].school?.name {
             mutableAttributedString.append(attributedString(string: "School:   \(schoolName)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }

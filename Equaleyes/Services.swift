@@ -29,11 +29,11 @@ struct NetworkingService {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
-                let model = try decoder.decode(T.self, from: data)
+                let decodedData = try decoder.decode(T.self, from: data)
                 
-                completion(model)
-            } catch let jsonErr {
-                print("Failed to decode, \(jsonErr)")
+                completion(decodedData)
+            } catch let jsonError {
+                print("Failed to decode, \(jsonError)")
             }
             
         }
