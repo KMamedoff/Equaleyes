@@ -153,8 +153,8 @@
 				7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */,
 				7B5C1D5A2264BD4F00AF5E3D /* LaunchScreen.storyboard */,
 				7B8DBF9A2267314500E5302E /* Localizable.strings */,
-				7B5C1D5D2264BD4F00AF5E3D /* Info.plist */,
 				7BDCBB68226720F5009CA101 /* Info-Dev.plist */,
+				7B5C1D5D2264BD4F00AF5E3D /* Info.plist */,
 			);
 			path = Equaleyes;
 			sourceTree = "<group>";

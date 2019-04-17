@@ -12,7 +12,8 @@ import Kingfisher
 class TeachersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private var teacherData = [Teacher]()
-    
+    private var activityIndicator = UIActivityIndicatorView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +63,19 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if teacherData.count == 0 {
+            activityIndicator.center = view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+            activityIndicator.color = UIColor.darkGray
+            view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+        } else {
+            if !activityIndicator.isHidden {
+                activityIndicator.stopAnimating()
+            }
+        }
+        
         return teacherData.count
     }
     
