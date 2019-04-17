@@ -43,9 +43,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func contactButtonAction(_ sender: Any) {
-        if let parentVC = self.parentController {
-            parentVC.contactAlert()
-        }
+        ContactActionSheet.presentContactActionSheet()
     }
     
 }

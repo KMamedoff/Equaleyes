@@ -11,9 +11,9 @@ import Kingfisher
 
 class TeachersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private var teacherData = [Teacher]()
-    private var activityIndicator = UIActivityIndicatorView()
-
+    fileprivate var teacherData = [Teacher]()
+    fileprivate var activityIndicator = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,7 +21,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         customizeUIElements()
     }
     
-    private func customizeUIElements() {
+    fileprivate func customizeUIElements() {
         if environment == .development {
             self.title = "teacher_title".localized() + " - DEV"
         }
@@ -34,12 +34,12 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         flow.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
-    private func networkingAndJSON() {
+    fileprivate func networkingAndJSON() {
         let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
         NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (posts: [Teacher]) in
             self.teacherData = posts
             
-            self.reloadWithAnimation()
+            self.reloadCollectionViewDataWithAnimation()
             
             for (index, _) in self.teacherData.enumerated() {
                 guard let teacherId = self.teacherData[index].id else { return }
@@ -63,7 +63,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         }
     }
     
-    private func reloadWithAnimation() {
+    fileprivate func reloadCollectionViewDataWithAnimation() {
         UIView.transition(with: self.collectionView, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.collectionView.reloadData()
         })
@@ -116,7 +116,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         }
         
         cell.userInfoTextView.attributedText = mutableAttributedString
-
+        
         return cell
     }
     
@@ -125,15 +125,16 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if UIDevice.current.orientation.isLandscape && UIScreen.main.bounds.width >= 667.0 {
-            let window = UIApplication.shared.keyWindow
-            let leftPadding = window!.safeAreaInsets.left
-            let rightPadding = window!.safeAreaInsets.left
-            
-
-            return CGSize(width: (UIScreen.main.bounds.width - leftPadding - rightPadding - 34) / 2, height: 150)
+        let leftPadding = UIApplication.shared.keyWindow!.safeAreaInsets.left
+        let rightPadding = UIApplication.shared.keyWindow!.safeAreaInsets.left
+        let screenWidth = UIScreen.main.bounds.width
+        let screenOrientation = UIDevice.current.orientation
+        let defaultCellHeight: CGFloat = 150
+        
+        if screenOrientation.isLandscape && screenWidth >= 667.0 {
+            return CGSize(width: (screenWidth - leftPadding - rightPadding - 34) / 2, height: defaultCellHeight)
         } else {
-            return CGSize(width: UIScreen.main.bounds.width - 20, height: 150)
+            return CGSize(width: screenWidth - leftPadding - rightPadding - 20, height: defaultCellHeight)
         }
     }
     

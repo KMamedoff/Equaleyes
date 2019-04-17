@@ -13,37 +13,29 @@ extension String {
     func localized(withComment comment: String? = nil) -> String {
         return NSLocalizedString(self, comment: comment ?? "")
     }
-    
 }
 
-extension UIView {
-    var parentController: UIViewController? {
-        var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder!.next
-            if let viewController = parentResponder as? UIViewController {
-                return viewController
-            }
+extension UIApplication {
+    static func topViewController(base: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return topViewController(base: selected)
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
         }
         
-        return nil
+        return base
     }
 }
 
 extension UIViewController {
-    func alert(title: String?, message: String?, preferredStyle: UIAlertController.Style, actions: [UIAlertAction]) {
+    func customContactAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style, actions: [UIAlertAction]) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         actions.forEach { alertController.addAction($0) }
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func contactAlert() {
-        self.alert(title: "contact_button_title".localized(), message: nil, preferredStyle: .actionSheet, actions: [
-            UIAlertAction(title: "contact_email".localized(), style: .default) { action in },
-            UIAlertAction(title: "contact_message".localized(), style: .default) { action in },
-            UIAlertAction(title: "contact_call".localized(), style: .default) { action in },
-            UIAlertAction(title: "contact_cancel".localized(), style: .cancel) { action in },
-            ])
     }
     
     func attributedString(string: String, fontName: String, fontSize: CGFloat, textColor: UIColor) -> NSMutableAttributedString {

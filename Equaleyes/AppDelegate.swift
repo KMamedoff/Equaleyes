@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    private func selectProductionEnvironment() {
+    fileprivate func selectProductionEnvironment() {
         #if DEVELOPMENT
         environment = .development
         #else

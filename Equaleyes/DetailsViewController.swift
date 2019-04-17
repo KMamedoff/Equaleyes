@@ -17,10 +17,10 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var contactButtonOutlet: UIButton!
     @IBOutlet weak var longInfoTextView: UITextViewFixed!
     
-    private var shortInfoMutableAttributedString = NSMutableAttributedString()
-    private var longInfoMutableAttributedString = NSMutableAttributedString()
-    private var detailsDataTeacher: Teacher?
-    private var detailsDataStudent: Student?
+    fileprivate var shortInfoMutableAttributedString = NSMutableAttributedString()
+    fileprivate var longInfoMutableAttributedString = NSMutableAttributedString()
+    fileprivate var detailsDataTeacher: Teacher?
+    fileprivate var detailsDataStudent: Student?
     public var isTeacher = false
     public var detailsData: Any?
     
@@ -31,13 +31,13 @@ class DetailsViewController: UIViewController {
         selectTeacherOrStudent()
     }
     
-    private func customizeUIElements() {
+    fileprivate func customizeUIElements() {
         self.title = "details_title".localized()
         
         contactButtonOutlet.setTitle("contact_button_title".localized(), for: .normal)
     }
     
-    private func selectTeacherOrStudent() {
+    fileprivate func selectTeacherOrStudent() {
         if isTeacher {
             contactButtonOutlet.isHidden = false
             detailsDataTeacher = detailsData as? Teacher
@@ -51,7 +51,7 @@ class DetailsViewController: UIViewController {
         }
     }
     
-    private func resizeImageView(_ value: RetrieveImageResult) {
+    fileprivate func resizeImageView(_ value: RetrieveImageResult) {
         let imageViewSize = CGSize(width: self.infoImageView.frame.width, height: self.infoImageView.frame.height)
         let imageAspectRatio = value.image.size.height / value.image.size.width
         
@@ -66,7 +66,7 @@ class DetailsViewController: UIViewController {
         }
     }
     
-    private func fillTeacherInfo() {
+    fileprivate func fillTeacherInfo() {
         // Image View
         if let imageUrl = detailsDataTeacher?.school?.imageUrl {
             infoImageView.setImageWithKingfisher(with: imageUrl) { result in
@@ -105,11 +105,11 @@ class DetailsViewController: UIViewController {
         longInfoTextView.attributedText = longInfoMutableAttributedString
     }
     
-    private func fillStudentInfo() {
+    fileprivate func fillStudentInfo() {
         
     }
     
     @IBAction func contactButtonAction(_ sender: UIButton) {
-        self.contactAlert()
+        ContactActionSheet.presentContactActionSheet()
     }
 }
