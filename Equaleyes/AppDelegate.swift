@@ -13,7 +13,7 @@ enum Environment: String {
     case development
 }
 
-var environment: Environment = .production
+var environment: Environment = .development
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,13 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        selectProductionEnvironment()
+        
+        return true
+    }
+    
+    private func selectProductionEnvironment() {
         #if DEVELOPMENT
         environment = .development
         #else
         environment = .production
         #endif
-        
-        return true
     }
     
 }

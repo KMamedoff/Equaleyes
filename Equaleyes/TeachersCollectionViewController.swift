@@ -16,10 +16,27 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        networkingAndJSON()
+        customizeUIElements()
+    }
+    
+    private func customizeUIElements() {
+        if environment == .development {
+            self.title = "teacher_title".localized() + " DEV"
+        }
+        
+        self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell")
+        self.collectionView.delaysContentTouches = false // A "fix" for Contact button
+        
+        let flow = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flow.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+    }
+    
+    private func networkingAndJSON() {
         let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
         NetworkingService.shared.fetchData(urlString: teacherUrl) { (posts: [Teacher]) in
             self.teacherData = posts
-
+            
             for (index, _) in self.teacherData.enumerated() {
                 guard let schoolId = self.teacherData[index].schoolId else { return }
                 let schoolUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
@@ -38,17 +55,6 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
                 }
             }
         }
-        
-        if environment == .development {
-            self.title = "teacher_title".localized() + " DEV"
-        }
-        
-        self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell") // Register Custom Cell
-        
-        self.collectionView.delaysContentTouches = false // A fix for UIButtons
-
-        let flow = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        flow.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0) // Top and Bottom insets
     }
     
     private func reloadWithAnimation() {

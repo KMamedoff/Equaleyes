@@ -12,7 +12,6 @@
 		7B5C1D572264BD4D00AF5E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D552264BD4D00AF5E3D /* Main.storyboard */; };
 		7B5C1D592264BD4F00AF5E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */; };
 		7B5C1D5C2264BD4F00AF5E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D5A2264BD4F00AF5E3D /* LaunchScreen.storyboard */; };
-		7B5C1D672264BD4F00AF5E3D /* EqualeyesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D662264BD4F00AF5E3D /* EqualeyesTests.swift */; };
 		7B5C1D852264CC9600AF5E3D /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */; };
 		7B5C1D862264CC9600AF5E3D /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */; };
 		7B5C1D882264CF0200AF5E3D /* TeachersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */; };
@@ -23,6 +22,7 @@
 		7B5C1D962266053600AF5E3D /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D952266053600AF5E3D /* DetailsViewController.swift */; };
 		7B8DBF972267314500E5302E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8DBF9A2267314500E5302E /* Localizable.strings */; };
 		7B8DBF982267314500E5302E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8DBF9A2267314500E5302E /* Localizable.strings */; };
+		7B8DBFA42267454600E5302E /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8DBFA32267454600E5302E /* Tests.swift */; };
 		7BDCBB54226720F5009CA101 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D912265411E00AF5E3D /* Structs.swift */; };
 		7BDCBB55226720F5009CA101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D512264BD4D00AF5E3D /* AppDelegate.swift */; };
 		7BDCBB56226720F5009CA101 /* TeachersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */; };
@@ -47,6 +47,13 @@
 			remoteGlobalIDString = 7B5C1D4D2264BD4D00AF5E3D;
 			remoteInfo = Equaleyes;
 		};
+		7B8DBFA7226745F600E5302E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B5C1D462264BD4D00AF5E3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7BDCBB51226720F5009CA101;
+			remoteInfo = "Equaleyes Dev";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +67,6 @@
 		7B5C1D5B2264BD4F00AF5E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B5C1D5D2264BD4F00AF5E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B5C1D622264BD4F00AF5E3D /* EqualeyesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EqualeyesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B5C1D662264BD4F00AF5E3D /* EqualeyesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualeyesTests.swift; sourceTree = "<group>"; };
 		7B5C1D682264BD4F00AF5E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 		7B8DBF93226730EA00E5302E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7B8DBF992267314500E5302E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B8DBF9B2267314900E5302E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7B8DBFA32267454600E5302E /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7BDCBB67226720F5009CA101 /* Equaleyes Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Equaleyes Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDCBB68226720F5009CA101 /* Info-Dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Dev.plist"; path = "/Users/mamedoff/Desktop/Projects/Equaleyes/Info-Dev.plist"; sourceTree = "<absolute>"; };
 		9B002290E443B8E054E20329 /* Pods-Equaleyes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Equaleyes.debug.xcconfig"; path = "Target Support Files/Pods-Equaleyes/Pods-Equaleyes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,7 +162,7 @@
 		7B5C1D652264BD4F00AF5E3D /* EqualeyesTests */ = {
 			isa = PBXGroup;
 			children = (
-				7B5C1D662264BD4F00AF5E3D /* EqualeyesTests.swift */,
+				7B8DBFA32267454600E5302E /* Tests.swift */,
 				7B5C1D682264BD4F00AF5E3D /* Info.plist */,
 			);
 			path = EqualeyesTests;
@@ -215,6 +222,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7B8DBFA8226745F600E5302E /* PBXTargetDependency */,
 				7B5C1D642264BD4F00AF5E3D /* PBXTargetDependency */,
 			);
 			name = EqualeyesTests;
@@ -452,7 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B5C1D672264BD4F00AF5E3D /* EqualeyesTests.swift in Sources */,
+				7B8DBFA42267454600E5302E /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +486,11 @@
 			isa = PBXTargetDependency;
 			target = 7B5C1D4D2264BD4D00AF5E3D /* Equaleyes */;
 			targetProxy = 7B5C1D632264BD4F00AF5E3D /* PBXContainerItemProxy */;
+		};
+		7B8DBFA8226745F600E5302E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7BDCBB51226720F5009CA101 /* Equaleyes Dev */;
+			targetProxy = 7B8DBFA7226745F600E5302E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -679,6 +692,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NM48V535H;
 				INFOPLIST_FILE = EqualeyesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -701,6 +715,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NM48V535H;
 				INFOPLIST_FILE = EqualeyesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
