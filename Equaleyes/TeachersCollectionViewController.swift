@@ -22,38 +22,39 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
     
     private func customizeUIElements() {
         if environment == .development {
-            self.title = "teacher_title".localized() + " DEV"
+            self.title = "teacher_title".localized() + " - DEV"
         }
         
         self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell")
         self.collectionView.delaysContentTouches = false // A "fix" for Contact button
         
         let flow = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        flow.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        flow.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
     
     private func networkingAndJSON() {
         let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
-        NetworkingService.shared.fetchData(urlString: teacherUrl) { (posts: [Teacher]) in
+        NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (posts: [Teacher]) in
             self.teacherData = posts
             
             for (index, _) in self.teacherData.enumerated() {
                 guard let schoolId = self.teacherData[index].schoolId else { return }
                 let schoolUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
-                NetworkingService.shared.fetchData(urlString: schoolUrl) { (posts: School) in
+                NetworkingService.shared.fetchData(urlString: schoolUrl) { [unowned self] (posts: School) in
                     self.teacherData[index].school = posts
                     
-                    self.reloadWithAnimation()
+                    if index == self.teacherData.count - 1 {
+                        self.reloadWithAnimation()
+                    }
                 }
                 
                 guard let teacherDescriptionId = self.teacherData[index].id else { return }
                 let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers/\(teacherDescriptionId)"
-                NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { (posts: Teacher) in
+                NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { [unowned self] (posts: Teacher) in
                     self.teacherData[index].description = posts.description
-                    
-                    self.reloadWithAnimation()
                 }
             }
+            
         }
     }
     
