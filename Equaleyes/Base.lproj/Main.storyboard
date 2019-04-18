@@ -70,7 +70,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="hh2-wH-vVt"/>
                     <navigationItem key="navigationItem" title="Teachers" id="dh8-si-0oy"/>
                     <connections>
-                        <segue destination="xsw-FR-myQ" kind="show" identifier="Item Details Segue" id="XdW-fl-WJY"/>
+                        <segue destination="xsw-FR-myQ" kind="show" identifier="Teacher Details Segue" id="XdW-fl-WJY"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77h-to-eHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -103,13 +103,13 @@
                                 </variation>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aun-ZG-gZE" userLabel="Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="192" width="207" height="83"/>
+                                <rect key="frame" x="20" y="192" width="207" height="67"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFM-TD-1H6" userLabel="Separator Line View">
-                                <rect key="frame" x="20" y="275" width="374" height="2"/>
+                                <rect key="frame" x="20" y="259" width="374" height="2"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="fbL-2K-SZ1"/>
@@ -135,7 +135,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dm-di-cj3" userLabel="Info Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                <rect key="frame" x="20" y="285" width="374" height="451"/>
+                                <rect key="frame" x="20" y="269" width="374" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -183,16 +183,15 @@
                                 <exclude reference="PIt-Ze-Joc"/>
                                 <exclude reference="QM3-jI-uWP"/>
                                 <exclude reference="SFN-07-luE"/>
+                                <exclude reference="BZW-Ts-QDp"/>
+                                <exclude reference="Fgn-oz-xNq"/>
+                                <exclude reference="OHF-vN-n01"/>
                                 <exclude reference="6Q9-pm-neb"/>
                                 <exclude reference="9Hn-ek-GKt"/>
                                 <exclude reference="EGU-zU-88N"/>
                                 <exclude reference="NUC-2J-YWk"/>
                                 <exclude reference="Tw8-tx-0rG"/>
                                 <exclude reference="ysF-8q-BAz"/>
-                                <exclude reference="6a7-18-Gzc"/>
-                                <exclude reference="JvU-qd-tg7"/>
-                                <exclude reference="Pns-ce-NCz"/>
-                                <exclude reference="wBO-oj-PpD"/>
                                 <exclude reference="5WV-lt-7QZ"/>
                                 <exclude reference="Gyd-3k-Tg6"/>
                                 <exclude reference="WLm-6i-r1S"/>
@@ -205,9 +204,10 @@
                                 <exclude reference="SyC-Fo-Rps"/>
                                 <exclude reference="W9J-MR-aXG"/>
                                 <exclude reference="hr8-C1-KeJ"/>
-                                <exclude reference="BZW-Ts-QDp"/>
-                                <exclude reference="Fgn-oz-xNq"/>
-                                <exclude reference="OHF-vN-n01"/>
+                                <exclude reference="6a7-18-Gzc"/>
+                                <exclude reference="JvU-qd-tg7"/>
+                                <exclude reference="Pns-ce-NCz"/>
+                                <exclude reference="wBO-oj-PpD"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
@@ -215,17 +215,17 @@
                                 <include reference="ATZ-tW-acL"/>
                                 <include reference="PIt-Ze-Joc"/>
                                 <include reference="QM3-jI-uWP"/>
+                                <include reference="Fgn-oz-xNq"/>
                                 <include reference="6Q9-pm-neb"/>
                                 <include reference="EGU-zU-88N"/>
                                 <include reference="Tw8-tx-0rG"/>
-                                <include reference="JvU-qd-tg7"/>
-                                <include reference="wBO-oj-PpD"/>
                                 <include reference="ren-eW-qH9"/>
                                 <include reference="tfx-CM-eN8"/>
                                 <include reference="usi-fb-DlP"/>
                                 <include reference="9T5-Ss-19h"/>
                                 <include reference="SyC-Fo-Rps"/>
-                                <include reference="Fgn-oz-xNq"/>
+                                <include reference="JvU-qd-tg7"/>
+                                <include reference="wBO-oj-PpD"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -233,35 +233,35 @@
                                 <include reference="ATZ-tW-acL"/>
                                 <include reference="PIt-Ze-Joc"/>
                                 <include reference="QM3-jI-uWP"/>
+                                <include reference="Fgn-oz-xNq"/>
                                 <include reference="6Q9-pm-neb"/>
                                 <include reference="EGU-zU-88N"/>
                                 <include reference="Tw8-tx-0rG"/>
-                                <include reference="JvU-qd-tg7"/>
-                                <include reference="wBO-oj-PpD"/>
                                 <exclude reference="5WV-lt-7QZ"/>
                                 <include reference="ren-eW-qH9"/>
                                 <include reference="tfx-CM-eN8"/>
                                 <include reference="usi-fb-DlP"/>
                                 <include reference="9T5-Ss-19h"/>
                                 <include reference="SyC-Fo-Rps"/>
-                                <include reference="Fgn-oz-xNq"/>
+                                <include reference="JvU-qd-tg7"/>
+                                <include reference="wBO-oj-PpD"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="SFN-07-luE"/>
+                                <include reference="BZW-Ts-QDp"/>
+                                <include reference="OHF-vN-n01"/>
                                 <include reference="9Hn-ek-GKt"/>
                                 <include reference="NUC-2J-YWk"/>
                                 <include reference="ysF-8q-BAz"/>
-                                <include reference="6a7-18-Gzc"/>
-                                <include reference="Pns-ce-NCz"/>
                                 <include reference="Gyd-3k-Tg6"/>
                                 <include reference="WLm-6i-r1S"/>
                                 <include reference="xS8-q5-7yF"/>
                                 <include reference="W9J-MR-aXG"/>
                                 <include reference="hr8-C1-KeJ"/>
-                                <include reference="BZW-Ts-QDp"/>
-                                <include reference="OHF-vN-n01"/>
+                                <include reference="6a7-18-Gzc"/>
+                                <include reference="Pns-ce-NCz"/>
                             </mask>
                         </variation>
                     </view>
@@ -275,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwl-Kg-5Si" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2625.8152173913045" y="-284.05797101449275"/>
+            <point key="canvasLocation" x="2690" y="109"/>
         </scene>
         <!--Students-->
         <scene sceneID="aZd-g6-Rnq">
@@ -288,14 +288,50 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rjn-fe-62K" kind="relationship" relationship="rootViewController" id="zR4-mx-ram"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="547-HS-m9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="945" y="447"/>
+        </scene>
+        <!--Students-->
+        <scene sceneID="azK-LI-Hjb">
+            <objects>
+                <collectionViewController id="Rjn-fe-62K" customClass="StudentsCollectionViewController" customModule="Equaleyes" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="U3x-k9-6KH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90197288990000002" green="0.90193891530000003" blue="0.90196198230000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rw8-CC-HfK">
+                            <size key="itemSize" width="414" height="206"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="Rjn-fe-62K" id="fpO-ef-zem"/>
+                            <outlet property="delegate" destination="Rjn-fe-62K" id="YHV-Cp-dao"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Item" id="dd4-yZ-euX"/>
+                    <navigationItem key="navigationItem" title="Students" id="heE-wg-CcJ"/>
+                    <connections>
+                        <segue destination="xsw-FR-myQ" kind="show" identifier="Student Details Segue" id="ieE-zx-ga3"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E2c-Bi-40j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="447"/>
         </scene>
     </scenes>
     <resources>
         <image name="Account Circle" width="27" height="27"/>
         <image name="Face" width="28" height="28"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XdW-fl-WJY"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -23,7 +23,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
     
     fileprivate func customizeUIElements() {
         if environment == .development {
-            self.title = "teacher_title".localized() + " - DEV"
+            self.title = "teacher_title".localizedString() + " - DEV"
         }
         
         self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell")
@@ -108,11 +108,11 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         }
         
         if let teacherClass = self.teacherData[indexPath.row].teacherClass {
-            mutableAttributedString.append(attributedString(string: "class".localized() + ": \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            mutableAttributedString.append(attributedString(string: "class".localizedString() + ": \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         if let schoolName = self.teacherData[indexPath.row].school?.name {
-            mutableAttributedString.append(attributedString(string: "school".localized() + ": \(schoolName)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            mutableAttributedString.append(attributedString(string: "school".localizedString() + ": \(schoolName)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         cell.userInfoTextView.attributedText = mutableAttributedString
@@ -143,7 +143,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Item Details Segue" {
+        if segue.identifier == "Teacher Details Segue" {
             let detailsVC = segue.destination as! DetailsViewController
             let indexPath = sender as! IndexPath
             detailsVC.isTeacher = true
@@ -152,7 +152,7 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Item Details Segue", sender: indexPath)
+        performSegue(withIdentifier: "Teacher Details Segue", sender: indexPath)
     }
     
 }

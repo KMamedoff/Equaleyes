@@ -20,7 +20,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        contactButtonOutlet.setTitle("contact_button_title".localized(), for: .normal)
+        contactButtonOutlet.setTitle("contact_button_title".localizedString(), for: .normal)
         
         self.backgroundColor = UIColor.clear
         

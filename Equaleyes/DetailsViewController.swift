@@ -32,9 +32,9 @@ class DetailsViewController: UIViewController {
     }
     
     fileprivate func customizeUIElements() {
-        self.title = "details_title".localized()
+        self.title = "details_title".localizedString()
         
-        contactButtonOutlet.setTitle("contact_button_title".localized(), for: .normal)
+        contactButtonOutlet.setTitle("contact_button_title".localizedString(), for: .normal)
     }
     
     fileprivate func selectTeacherOrStudent() {
@@ -85,11 +85,11 @@ class DetailsViewController: UIViewController {
         }
         
         if let teacherClass = detailsDataTeacher?.teacherClass {
-            shortInfoMutableAttributedString.append(attributedString(string: "class".localized() + ": \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append(attributedString(string: "class".localizedString() + ": \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         if let schoolName = detailsDataTeacher?.school?.name {
-            shortInfoMutableAttributedString.append(attributedString(string: "school".localized() + ": \(schoolName)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append(attributedString(string: "school".localizedString() + ": \(schoolName)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         shortInfoTextView.attributedText = shortInfoMutableAttributedString
@@ -97,7 +97,7 @@ class DetailsViewController: UIViewController {
         // Long Info
         if let description = detailsDataTeacher?.description {
             if description != "" {
-                longInfoMutableAttributedString.append(attributedString(string: "details_about_title".localized() + "\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+                longInfoMutableAttributedString.append(attributedString(string: "details_about_title".localizedString() + "\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
                 longInfoMutableAttributedString.append(attributedString(string: "\(description)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
             }
         }

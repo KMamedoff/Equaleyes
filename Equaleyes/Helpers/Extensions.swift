@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 extension String {
-    func localized(withComment comment: String? = nil) -> String {
+    func localizedString(withComment comment: String? = nil) -> String {
         return NSLocalizedString(self, comment: comment ?? "")
     }
 }
