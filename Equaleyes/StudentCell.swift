@@ -1,5 +1,5 @@
 //
-//  TeacherCell.swift
+//  StudentCell.swift
 //  Equaleyes
 //
 //  Created by Kenan Mamedoff on 19/04/2019.
@@ -8,37 +8,28 @@
 
 import UIKit
 
-class TeacherCell: BaseCollectionViewCell<Teacher> {
+class StudentCell: BaseCollectionViewCell<Student> {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        contactButton.isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var item: Teacher! {
+    override var item: Student! {
         didSet {
-            if let imageUrl = item.imageUrl {
-                userProfileImageView.setImageWithKingfisher(with: imageUrl) { result in
-                    switch result {
-                    case .success(_):
-                        break
-                    case .failure(_):
-                        self.userProfileImageView.image = UIImage(named: "No Image")
-                    }
-                }
-            }
-            
             let mutableAttributedString = NSMutableAttributedString()
             
             if let name = item.name {
                 mutableAttributedString.append("\(name)\n".customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
             }
             
-            if let teacherClass = item.teacherClass {
-                let teacherClassLocalizedString = "class".localizedString() + ": \(teacherClass)\n"
+            if let grade = item.grade {
+                let teacherClassLocalizedString = "grade".localizedString() + ": \(grade)\n"
                 mutableAttributedString.append(teacherClassLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
             }
             
@@ -52,3 +43,4 @@ class TeacherCell: BaseCollectionViewCell<Teacher> {
     }
     
 }
+

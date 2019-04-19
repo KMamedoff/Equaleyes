@@ -28,6 +28,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
     let userProfileImageView: UIImageView = {
         let userProfileImageView = UIImageView()
         userProfileImageView.translatesAutoresizingMaskIntoConstraints = false
+        userProfileImageView.image = UIImage(named: "Account Circle")
         userProfileImageView.isUserInteractionEnabled = false
         userProfileImageView.layer.cornerRadius = 35
         userProfileImageView.layer.borderWidth = 1.0
@@ -40,6 +41,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
     let userInfoTextView: UITextViewFixed = {
         let userInfoTextView = UITextViewFixed()
         userInfoTextView.translatesAutoresizingMaskIntoConstraints = false
+        userInfoTextView.backgroundColor = .clear
         userInfoTextView.isUserInteractionEnabled = false
         userInfoTextView.isEditable = false
         userInfoTextView.isScrollEnabled = false
@@ -63,9 +65,10 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         contactButton.translatesAutoresizingMaskIntoConstraints = false
         contactButton.layer.masksToBounds = true
         contactButton.layer.cornerRadius = 16
-        contactButton.titleLabel?.font =  UIFont(name: "AvenirNextCondensed-Regular", size: 14)
+        contactButton.titleLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 14)
         contactButton.setTitle("contact_button_title".localizedString(), for: .normal)
         contactButton.setTitleColor(.white, for: .normal)
+        contactButton.setTitleColor(.lightGray, for: .highlighted)
         contactButton.backgroundColor = UIColor(red:0.15, green:0.13, blue:0.37, alpha:1.00)
 
         return contactButton
@@ -74,11 +77,10 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        layerProperties()
+        
         addSubview(roundedBackgroundView)
-        roundedBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        roundedBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         roundedBackgroundView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-
         roundedBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         roundedBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         roundedBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -109,7 +111,13 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         let horConstraint = NSLayoutConstraint(item: contactButton, attribute: .centerX, relatedBy: .equal, toItem: roundedBackgroundView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
         NSLayoutConstraint.activate([horConstraint])
         contactButton.addTarget(self, action: #selector(contactButtonAction), for: .touchUpInside)
-
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    fileprivate func layerProperties() {
         layer.shadowOpacity = 0.4
         layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowRadius = 2
@@ -117,10 +125,6 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         layer.masksToBounds = false
         layer.shouldRasterize = true // Ask iOS to ache the rendered shadow so that it oesn't need to be redrawn
         layer.rasterizationScale = UIScreen.main.scale
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     @objc func contactButtonAction(_ sender: Any) {

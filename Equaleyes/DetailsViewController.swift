@@ -19,56 +19,37 @@ class DetailsViewController: UIViewController {
     
     fileprivate var shortInfoMutableAttributedString = NSMutableAttributedString()
     fileprivate var longInfoMutableAttributedString = NSMutableAttributedString()
-    fileprivate var detailsDataTeacher: Teacher?
-    fileprivate var detailsDataStudent: Student?
-    public var isTeacher = false
-    public var detailsData: Any?
+    fileprivate var isTeacher = false
     
+    var detailsData: Any? {
+        didSet {
+            if detailsData is Teacher {
+                isTeacher = true
+            } else if detailsData is Student {
+                isTeacher = false
+            }
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        customizeUIElements()
-        selectTeacherOrStudent()
+        customizeUI()
     }
     
-    fileprivate func customizeUIElements() {
+    fileprivate func customizeUI() {
         self.title = "details_title".localizedString()
         
         contactButtonOutlet.setTitle("contact_button_title".localizedString(), for: .normal)
+        
+        isTeacher ? fillTeacherInfo(detailsData: detailsData as! Teacher) : fillStudentInfo(detailsData: detailsData as! Student)
     }
     
-    fileprivate func selectTeacherOrStudent() {
-        if isTeacher {
-            contactButtonOutlet.isHidden = false
-            detailsDataTeacher = detailsData as? Teacher
-            
-            fillTeacherInfo()
-        } else {
-            contactButtonOutlet.isHidden = true
-            detailsDataStudent = detailsData as? Student
-            
-            fillStudentInfo()
-        }
-    }
-    
-    fileprivate func resizeImageView(_ value: RetrieveImageResult) {
-        let imageViewSize = CGSize(width: self.infoImageView.frame.width, height: self.infoImageView.frame.height)
-        let imageAspectRatio = value.image.size.height / value.image.size.width
+    fileprivate func fillTeacherInfo(detailsData: Teacher) {
+        contactButtonOutlet.isHidden = false
         
-        self.portraitImageViewConstraint.constant = imageViewSize.width * imageAspectRatio
-        
-        if self.portraitImageViewConstraint.constant > UIScreen.main.bounds.height * 0.5 {
-            self.portraitImageViewConstraint.constant = UIScreen.main.bounds.height * 0.5
-        }
-        
-        UIView.animate(withDuration: 0.1) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    fileprivate func fillTeacherInfo() {
         // Image View
-        if let imageUrl = detailsDataTeacher?.school?.imageUrl {
+        if let imageUrl = detailsData.school?.imageUrl {
             infoImageView.setImageWithKingfisher(with: imageUrl) { result in
                 switch result {
                 case .success(let value):
@@ -78,36 +59,97 @@ class DetailsViewController: UIViewController {
                 }
             }
         }
-        /*
+        
         // Short Info
-        if let name = detailsDataTeacher?.name {
-            shortInfoMutableAttributedString.append(attributedString(string: "\(name)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+        if let name = detailsData.name {
+            shortInfoMutableAttributedString.append("\(name)\n".customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
         }
         
-        if let teacherClass = detailsDataTeacher?.teacherClass {
-            shortInfoMutableAttributedString.append(attributedString(string: "class".localizedString() + ": \(teacherClass)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+        if let teacherClass = detailsData.teacherClass {
+            let teacherClassLocalizedString = "class".localizedString() + ": \(teacherClass)\n"
+            shortInfoMutableAttributedString.append(teacherClassLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
-        if let schoolName = detailsDataTeacher?.school?.name {
-            shortInfoMutableAttributedString.append(attributedString(string: "school".localizedString() + ": \(schoolName)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+        if let schoolName = detailsData.school?.name {
+            let schoolNameLocalizedString = "school".localizedString() + ": \(schoolName)"
+            shortInfoMutableAttributedString.append(schoolNameLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
         }
         
         shortInfoTextView.attributedText = shortInfoMutableAttributedString
         
         // Long Info
-        if let description = detailsDataTeacher?.description {
+        if let description = detailsData.description {
             if description != "" {
-                longInfoMutableAttributedString.append(attributedString(string: "details_about_title".localizedString() + "\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
-                longInfoMutableAttributedString.append(attributedString(string: "\(description)", fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+                let longInfoTitle = "details_about_title".localizedString() + "\n"
+                longInfoMutableAttributedString.append(longInfoTitle.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+                
+                let longInfoDescription = "\(description)"
+                longInfoMutableAttributedString.append(longInfoDescription.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
             }
         }
         
         longInfoTextView.attributedText = longInfoMutableAttributedString
-        */
     }
     
-    fileprivate func fillStudentInfo() {
+    fileprivate func fillStudentInfo(detailsData: Student) {
+        contactButtonOutlet.isHidden = true
         
+        // Image View
+        if let imageUrl = detailsData.school?.imageUrl {
+            infoImageView.setImageWithKingfisher(with: imageUrl) { result in
+                switch result {
+                case .success(let value):
+                    self.resizeImageView(value)
+                case .failure(_):
+                    self.infoImageView.image = UIImage(named: "No Image")
+                }
+            }
+        }
+        
+        // Short Info
+        if let name = detailsData.name {
+            shortInfoMutableAttributedString.append("\(name)\n".customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+        }
+        
+        if let grade = detailsData.grade {
+            let teacherClassLocalizedString = "grade".localizedString() + ": \(grade)\n"
+            shortInfoMutableAttributedString.append(teacherClassLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+        }
+        
+        if let schoolName = detailsData.school?.name {
+            let schoolNameLocalizedString = "school".localizedString() + ": \(schoolName)"
+            shortInfoMutableAttributedString.append(schoolNameLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+        }
+        
+        shortInfoTextView.attributedText = shortInfoMutableAttributedString
+        
+        // Long Info
+        if let description = detailsData.description {
+            if description != "" {
+                let longInfoTitle = "details_about_title".localizedString() + "\n"
+                longInfoMutableAttributedString.append(longInfoTitle.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+                
+                let longInfoDescription = "\(description)"
+                longInfoMutableAttributedString.append(longInfoDescription.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            }
+        }
+        
+        longInfoTextView.attributedText = longInfoMutableAttributedString
+    }
+    
+    fileprivate func resizeImageView(_ value: RetrieveImageResult) {
+        let imageViewSize = infoImageView.frame.size
+        let imageAspectRatio = value.image.size.height / value.image.size.width
+        
+        self.portraitImageViewConstraint.constant = imageViewSize.width * imageAspectRatio
+        
+        if self.portraitImageViewConstraint.constant >= UIScreen.main.bounds.height * 0.4 {
+            self.portraitImageViewConstraint.constant = UIScreen.main.bounds.height * 0.4
+        }
+        
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func contactButtonAction(_ sender: UIButton) {

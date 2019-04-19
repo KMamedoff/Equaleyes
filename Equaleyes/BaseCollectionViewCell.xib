@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <viewLayoutGuide key="safeArea" id="lNT-xQ-Ql2"/>
+            <viewLayoutGuide key="safeArea" id="YKP-L0-RH9"/>
             <size key="customSize" width="488" height="297"/>
             <point key="canvasLocation" x="202.89855072463769" y="61.941964285714285"/>
         </collectionViewCell>

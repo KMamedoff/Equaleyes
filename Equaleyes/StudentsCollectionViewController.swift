@@ -1,14 +1,14 @@
 //
-//  TeachersCollectionViewController.swift
+//  StudentsCollectionViewController.swift
 //  Equaleyes
 //
-//  Created by Kenan Mamedoff on 15/04/2019.
+//  Created by Kenan Mamedoff on 19/04/2019.
 //  Copyright © 2019 Kenan Mamedoff. All rights reserved.
 //
 
 import UIKit
 
-class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell, Teacher>, UICollectionViewDelegateFlowLayout {
+class StudentsCollectionViewController: BaseCollectionViewController<StudentCell, Student>, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,20 +19,20 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
     
     fileprivate func customizeUI() {
         if environment == .development {
-            self.title = "teacher_title".localizedString() + " - DEV"
+            self.title = "student_title".localizedString() + " - DEV"
         }
     }
     
     fileprivate func fetchData() {
-        let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
-        NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (teachers: [Teacher]) in
-            self.items = teachers
+        let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/students"
+        NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (students: [Student]) in
+            self.items = students
             self.collectionView.reloadData()
             
             for (index, _) in self.items.enumerated() {
                 guard let teacherId = self.items[index].id else { return }
-                let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers/\(teacherId)"
-                NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { [unowned self] (descriptions: Teacher) in
+                let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/students/\(teacherId)"
+                NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { [unowned self] (descriptions: Student) in
                     self.items[index].description = descriptions.description
                 }
                 
@@ -62,15 +62,15 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
         let screenWidth = UIScreen.main.bounds.width
         var cellHeight = CGFloat()
         
-        if let collectionViewCell = collectionView.cellForItem(at: indexPath) as? TeacherCell {
-            cellHeight = 20 + collectionViewCell.userInfoTextView.sizeThatFits(collectionViewCell.userInfoTextView.bounds.size).height + 20 + collectionViewCell.contactButton.frame.height
+        if let collectionViewCell = collectionView.cellForItem(at: indexPath) as? StudentCell {
+            cellHeight = 20 + collectionViewCell.userInfoTextView.sizeThatFits(collectionViewCell.userInfoTextView.bounds.size).height + 20
         }
         
         return CGSize(width: screenWidth - leftPadding - rightPadding - 20, height: cellHeight)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Teacher Details Segue" {
+        if segue.identifier == "Student Details Segue" {
             let detailsVC = segue.destination as! DetailsViewController
             let indexPath = sender as! IndexPath
             detailsVC.detailsData = self.items[indexPath.row]
@@ -78,7 +78,7 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Teacher Details Segue", sender: indexPath)
+        performSegue(withIdentifier: "Student Details Segue", sender: indexPath)
     }
     
 }
