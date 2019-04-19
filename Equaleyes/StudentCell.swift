@@ -14,7 +14,7 @@ class StudentCell: BaseCollectionViewCell<Student> {
         super.init(frame: frame)
         
         self.contactButton.isHidden = true
-        textViewBottomAnchor.constant = 0
+        textViewBottomAnchor.constant = -20
     }
     
     required init?(coder aDecoder: NSCoder) {
