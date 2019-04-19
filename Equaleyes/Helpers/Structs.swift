@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Teacher: Decodable {
+struct Teacher: Codable {
     let id: Int?
     let name: String?
     let schoolId: Int?
@@ -22,7 +22,7 @@ struct Teacher: Decodable {
     }
 }
 
-struct Student: Decodable {
+struct Student: Codable {
     let id: Int?
     let name: String?
     let schoolId: Int?
@@ -31,7 +31,7 @@ struct Student: Decodable {
     var school: School?
 }
 
-struct School: Decodable {
+struct School: Codable {
     let id: Int?
     let name: String?
     let imageUrl: String?

@@ -9,10 +9,9 @@
 import UIKit
 import Kingfisher
 
-class TeachersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell, Teacher>, UICollectionViewDelegateFlowLayout {
     
     fileprivate var teacherData = [Teacher]()
-    fileprivate var activityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +24,6 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         if environment == .development {
             self.title = "teacher_title".localizedString() + " - DEV"
         }
-        
-        self.collectionView!.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Custom Cell")
-        self.collectionView.delaysContentTouches = false // A "fix" for Contact button
-        self.collectionView.contentInsetAdjustmentBehavior = .always
-
-        let flow = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        flow.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     fileprivate func networkingAndJSON() {
@@ -67,23 +59,6 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         UIView.transition(with: self.collectionView, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.collectionView.reloadData()
         })
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if teacherData.count == 0 {
-            activityIndicator.center = view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
-            activityIndicator.color = UIColor.darkGray
-            view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-        } else {
-            if !activityIndicator.isHidden {
-                activityIndicator.stopAnimating()
-            }
-        }
-        
-        return teacherData.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -136,10 +111,6 @@ class TeachersCollectionViewController: UICollectionViewController, UICollection
         } else {
             return CGSize(width: screenWidth - leftPadding - rightPadding - 20, height: defaultCellHeight)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

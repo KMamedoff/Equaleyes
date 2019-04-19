@@ -299,7 +299,7 @@
         <!--Students-->
         <scene sceneID="azK-LI-Hjb">
             <objects>
-                <collectionViewController id="Rjn-fe-62K" customClass="StudentsCollectionViewController" customModule="Equaleyes" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Rjn-fe-62K" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="U3x-k9-6KH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,6 +332,6 @@
         <image name="Face" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XdW-fl-WJY"/>
+        <segue reference="ieE-zx-ga3"/>
     </inferredMetricsTieBreakers>
 </document>
