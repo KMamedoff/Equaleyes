@@ -78,7 +78,7 @@ class DetailsViewController: UIViewController {
                 }
             }
         }
-        
+        /*
         // Short Info
         if let name = detailsDataTeacher?.name {
             shortInfoMutableAttributedString.append(attributedString(string: "\(name)\n", fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
@@ -103,6 +103,7 @@ class DetailsViewController: UIViewController {
         }
         
         longInfoTextView.attributedText = longInfoMutableAttributedString
+        */
     }
     
     fileprivate func fillStudentInfo() {

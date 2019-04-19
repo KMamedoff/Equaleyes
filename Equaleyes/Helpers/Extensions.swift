@@ -31,22 +31,24 @@ extension UIApplication {
     }
 }
 
-extension UIViewController {
-    func customContactAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style, actions: [UIAlertAction]) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-        actions.forEach { alertController.addAction($0) }
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func attributedString(string: String, fontName: String, fontSize: CGFloat, textColor: UIColor) -> NSMutableAttributedString {
+extension String {
+    func customAttributedString(fontName: String, fontSize: CGFloat, textColor: UIColor) -> NSMutableAttributedString {
         let attribute: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: fontName, size: fontSize)!,
             .foregroundColor: textColor
         ]
         
-        let attributedString = NSMutableAttributedString(string: string, attributes: attribute)
+        let attributedString = NSMutableAttributedString(string: self, attributes: attribute)
         
         return attributedString
+    }
+}
+
+extension UIViewController {
+    func customContactAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style, actions: [UIAlertAction]) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        actions.forEach { alertController.addAction($0) }
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

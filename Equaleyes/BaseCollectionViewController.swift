@@ -13,11 +13,7 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
     fileprivate let cellId = "Base Cell"
     fileprivate var activityIndicator = UIActivityIndicatorView()
 
-    var items = [U]() {
-        didSet {
-            collectionView?.reloadData()
-        }
-    }
+    var items = [U]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +26,6 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         collectionView?.register(T.self, forCellWithReuseIdentifier: cellId)
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        
         
         collectionView?.delaysContentTouches = false // A "fix" for Contact button
         collectionView?.contentInsetAdjustmentBehavior = .always
@@ -66,5 +61,14 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         return cell
     }
     
+    func reloadCollectionViewDataWithAnimation() {
+        UIView.transition(with: self.collectionView, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            self.collectionView.reloadData()
+        })
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
     
 }

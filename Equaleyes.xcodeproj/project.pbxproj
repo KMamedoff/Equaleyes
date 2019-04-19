@@ -12,8 +12,6 @@
 		7B5C1D572264BD4D00AF5E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D552264BD4D00AF5E3D /* Main.storyboard */; };
 		7B5C1D592264BD4F00AF5E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */; };
 		7B5C1D5C2264BD4F00AF5E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D5A2264BD4F00AF5E3D /* LaunchScreen.storyboard */; };
-		7B5C1D852264CC9600AF5E3D /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */; };
-		7B5C1D862264CC9600AF5E3D /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */; };
 		7B5C1D882264CF0200AF5E3D /* TeachersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */; };
 		7B5C1D8A2264E98700AF5E3D /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D892264E98700AF5E3D /* IBDesignables.swift */; };
 		7B5C1D902265408000AF5E3D /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D8F2265408000AF5E3D /* Services.swift */; };
@@ -40,11 +38,9 @@
 		7BDCBB58226720F5009CA101 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D932265E48900AF5E3D /* Extensions.swift */; };
 		7BDCBB59226720F5009CA101 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D8F2265408000AF5E3D /* Services.swift */; };
 		7BDCBB5A226720F5009CA101 /* IBDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D892264E98700AF5E3D /* IBDesignables.swift */; };
-		7BDCBB5B226720F5009CA101 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */; };
 		7BDCBB5D226720F5009CA101 /* Pods_Equaleyes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A908FF8D5E3F0B4AB4C7454A /* Pods_Equaleyes.framework */; };
 		7BDCBB5F226720F5009CA101 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D5A2264BD4F00AF5E3D /* LaunchScreen.storyboard */; };
 		7BDCBB60226720F5009CA101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */; };
-		7BDCBB61226720F5009CA101 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */; };
 		7BDCBB62226720F5009CA101 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C1D552264BD4D00AF5E3D /* Main.storyboard */; };
 		CA86914DA7663270661ADEF2 /* Pods_EqualeyesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37B7E3E0529845151FB27A7 /* Pods_EqualeyesTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,8 +74,6 @@
 		7B5C1D5D2264BD4F00AF5E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B5C1D622264BD4F00AF5E3D /* EqualeyesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EqualeyesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5C1D682264BD4F00AF5E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
-		7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachersCollectionViewController.swift; sourceTree = "<group>"; };
 		7B5C1D892264E98700AF5E3D /* IBDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignables.swift; sourceTree = "<group>"; };
 		7B5C1D8F2265408000AF5E3D /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
@@ -163,8 +157,6 @@
 				7B5C1D952266053600AF5E3D /* DetailsViewController.swift */,
 				7B64ED5222694B9100CEE22D /* BaseCollectionViewCell.xib */,
 				7B64ED5122694B9100CEE22D /* BaseCollectionViewCell.swift */,
-				7B5C1D842264CC9600AF5E3D /* CustomCollectionViewCell.xib */,
-				7B5C1D832264CC9600AF5E3D /* CustomCollectionViewCell.swift */,
 				7B64ED6622694EAC00CEE22D /* TeacherCell.swift */,
 				7B5C1D582264BD4F00AF5E3D /* Assets.xcassets */,
 				7B5C1D5A2264BD4F00AF5E3D /* LaunchScreen.storyboard */,
@@ -326,7 +318,6 @@
 				7B64ED5522694B9100CEE22D /* BaseCollectionViewCell.xib in Resources */,
 				7B5C1D5C2264BD4F00AF5E3D /* LaunchScreen.storyboard in Resources */,
 				7B5C1D592264BD4F00AF5E3D /* Assets.xcassets in Resources */,
-				7B5C1D862264CC9600AF5E3D /* CustomCollectionViewCell.xib in Resources */,
 				7B5C1D572264BD4D00AF5E3D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,7 +337,6 @@
 				7B64ED5622694B9100CEE22D /* BaseCollectionViewCell.xib in Resources */,
 				7BDCBB5F226720F5009CA101 /* LaunchScreen.storyboard in Resources */,
 				7BDCBB60226720F5009CA101 /* Assets.xcassets in Resources */,
-				7BDCBB61226720F5009CA101 /* CustomCollectionViewCell.xib in Resources */,
 				7BDCBB62226720F5009CA101 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,7 +474,6 @@
 				7B5C1D942265E48900AF5E3D /* Extensions.swift in Sources */,
 				7B5C1D902265408000AF5E3D /* Services.swift in Sources */,
 				7B5C1D8A2264E98700AF5E3D /* IBDesignables.swift in Sources */,
-				7B5C1D852264CC9600AF5E3D /* CustomCollectionViewCell.swift in Sources */,
 				7B64ED5E22694C1800CEE22D /* BaseCollectionViewController.swift in Sources */,
 				7B808E1C2267B78500E2E061 /* Classes.swift in Sources */,
 			);
@@ -512,7 +501,6 @@
 				7BDCBB59226720F5009CA101 /* Services.swift in Sources */,
 				7B64ED5F22694C1800CEE22D /* BaseCollectionViewController.swift in Sources */,
 				7BDCBB5A226720F5009CA101 /* IBDesignables.swift in Sources */,
-				7BDCBB5B226720F5009CA101 /* CustomCollectionViewCell.swift in Sources */,
 				7B808E1D2267E7E200E2E061 /* Classes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
