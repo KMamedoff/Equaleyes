@@ -32,6 +32,9 @@
 		7BA71098226A811F004CB181 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA71097226A811E004CB181 /* Fonts.swift */; };
 		7BB34683226A3B0200C9B814 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB34682226A3B0200C9B814 /* StudentCell.swift */; };
 		7BB34685226A3C5400C9B814 /* StudentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB34684226A3C5400C9B814 /* StudentsCollectionViewController.swift */; };
+		7BB35A55226A8F9800CEA9D9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA71097226A811E004CB181 /* Fonts.swift */; };
+		7BB35A56226A8FA800CEA9D9 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB34682226A3B0200C9B814 /* StudentCell.swift */; };
+		7BB35A57226A8FAF00CEA9D9 /* StudentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB34684226A3C5400C9B814 /* StudentsCollectionViewController.swift */; };
 		7BDCBB54226720F5009CA101 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D912265411E00AF5E3D /* Structs.swift */; };
 		7BDCBB55226720F5009CA101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D512264BD4D00AF5E3D /* AppDelegate.swift */; };
 		7BDCBB56226720F5009CA101 /* TeachersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D872264CF0100AF5E3D /* TeachersCollectionViewController.swift */; };
@@ -525,10 +528,13 @@
 				7BDCBB55226720F5009CA101 /* AppDelegate.swift in Sources */,
 				7BDCBB56226720F5009CA101 /* TeachersCollectionViewController.swift in Sources */,
 				7BDCBB57226720F5009CA101 /* DetailsViewController.swift in Sources */,
+				7BB35A55226A8F9800CEA9D9 /* Fonts.swift in Sources */,
 				7B64ED6822694EAC00CEE22D /* TeacherCell.swift in Sources */,
+				7BB35A56226A8FA800CEA9D9 /* StudentCell.swift in Sources */,
 				7BDCBB58226720F5009CA101 /* Extensions.swift in Sources */,
 				7B64ED5422694B9100CEE22D /* BaseCollectionViewCell.swift in Sources */,
 				7BDCBB59226720F5009CA101 /* Services.swift in Sources */,
+				7BB35A57226A8FAF00CEA9D9 /* StudentsCollectionViewController.swift in Sources */,
 				7B64ED5F22694C1800CEE22D /* BaseCollectionViewController.swift in Sources */,
 				7BDCBB5A226720F5009CA101 /* IBDesignables.swift in Sources */,
 				7B808E1D2267E7E200E2E061 /* Classes.swift in Sources */,
