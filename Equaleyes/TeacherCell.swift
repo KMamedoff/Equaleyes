@@ -18,37 +18,35 @@ class TeacherCell: BaseCollectionViewCell<Teacher> {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var item: Teacher! {
-        didSet {
-            if let imageUrl = item.imageUrl {
-                userProfileImageView.setImageWithKingfisher(with: imageUrl) { result in
-                    switch result {
-                    case .success(_):
-                        break
-                    case .failure(_):
-                        self.userProfileImageView.image = UIImage(named: "No Image")
-                    }
+    override func configure(text: Teacher!) {
+        if let imageUrl = text?.imageUrl {
+            userProfileImageView.setImageWithKingfisher(with: imageUrl) { result in
+                switch result {
+                case .success(_):
+                    break
+                case .failure(_):
+                    self.userProfileImageView.image = UIImage(named: "No Image")
                 }
             }
-            
-            let mutableAttributedString = NSMutableAttributedString()
-            
-            if let name = item.name {
-                mutableAttributedString.append("\(name)\n".customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
-            }
-            
-            if let teacherClass = item.teacherClass {
-                let teacherClassLocalizedString = "class".localizedString() + ": \(teacherClass)\n"
-                mutableAttributedString.append(teacherClassLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
-            }
-            
-            if let schoolName = item.school?.name {
-                let schoolNameLocalizedString = "school".localizedString() + ": \(schoolName)"
-                mutableAttributedString.append(schoolNameLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
-            }
-            
-            userInfoTextView.attributedText = mutableAttributedString
         }
+        
+        let mutableAttributedString = NSMutableAttributedString()
+        
+        if let name = text?.name {
+            mutableAttributedString.append("\(name)\n".customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+        }
+        
+        if let teacherClass = text?.teacherClass {
+            let teacherClassLocalizedString = "class".localizedString() + ": \(teacherClass)\n"
+            mutableAttributedString.append(teacherClassLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+        }
+        
+        if let schoolName = text?.school?.name {
+            let schoolNameLocalizedString = "school".localizedString() + ": \(schoolName)"
+            mutableAttributedString.append(schoolNameLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+        }
+        
+        userInfoLabel.attributedText = mutableAttributedString
     }
     
 }

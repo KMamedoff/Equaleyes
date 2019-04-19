@@ -9,8 +9,6 @@
 import UIKit
 
 class BaseCollectionViewCell<U>: UICollectionViewCell {
-
-    var item: U!
     
     let roundedBackgroundView: UIView = {
         let roundedBackgroundView = UIView()
@@ -28,7 +26,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
     let userProfileImageView: UIImageView = {
         let userProfileImageView = UIImageView()
         userProfileImageView.translatesAutoresizingMaskIntoConstraints = false
-        userProfileImageView.image = UIImage(named: "Account Circle")
+        userProfileImageView.image = UIImage(named: "No Image")
         userProfileImageView.isUserInteractionEnabled = false
         userProfileImageView.layer.cornerRadius = 35
         userProfileImageView.layer.borderWidth = 1.0
@@ -38,16 +36,14 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         return userProfileImageView
     }()
     
-    let userInfoTextView: UITextViewFixed = {
-        let userInfoTextView = UITextViewFixed()
-        userInfoTextView.translatesAutoresizingMaskIntoConstraints = false
-        userInfoTextView.backgroundColor = .clear
-        userInfoTextView.isUserInteractionEnabled = false
-        userInfoTextView.isEditable = false
-        userInfoTextView.isScrollEnabled = false
-        userInfoTextView.isSelectable = false
-        
-        return userInfoTextView
+    let userInfoLabel: UILabel = {
+        let userInfoLabel = UILabel()
+        userInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        userInfoLabel.backgroundColor = .clear
+        userInfoLabel.isUserInteractionEnabled = false
+        userInfoLabel.numberOfLines = 0
+        userInfoLabel.lineBreakMode = .byWordWrapping
+        return userInfoLabel
     }()
     
     let arrowImageView: UIImageView = {
@@ -97,13 +93,6 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         arrowImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         arrowImageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
         
-        addSubview(userInfoTextView)
-        userInfoTextView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-
-        let horizontalSpace = NSLayoutConstraint(item: userInfoTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 20)
-        let horizontalSpace2 = NSLayoutConstraint(item: userInfoTextView, attribute: .right, relatedBy: .equal, toItem: arrowImageView, attribute: .left, multiplier: 1, constant: -20)
-        NSLayoutConstraint.activate([horizontalSpace, horizontalSpace2])
-        
         addSubview(contactButton)
         contactButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15).isActive = true
         contactButton.widthAnchor.constraint(equalTo: roundedBackgroundView.widthAnchor, multiplier: 0.44).isActive = true
@@ -111,10 +100,32 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         let horConstraint = NSLayoutConstraint(item: contactButton, attribute: .centerX, relatedBy: .equal, toItem: roundedBackgroundView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
         NSLayoutConstraint.activate([horConstraint])
         contactButton.addTarget(self, action: #selector(contactButtonAction), for: .touchUpInside)
+        
+        addSubview(userInfoLabel)
+        userInfoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        userInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -55).isActive = true
+        
+        let horizontalSpace = NSLayoutConstraint(item: userInfoLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 20)
+        let horizontalSpace2 = NSLayoutConstraint(item: userInfoLabel, attribute: .right, relatedBy: .equal, toItem: arrowImageView, attribute: .left, multiplier: 1, constant: -20)
+        NSLayoutConstraint.activate([horizontalSpace, horizontalSpace2])
+        
+        userInfoLabel.backgroundColor = .groupTableViewBackground
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(text: U!) {
+        
+    }
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        userInfoLabel.preferredMaxLayoutWidth = layoutAttributes.size.width - contentView.layoutMargins.left - contentView.layoutMargins.right
+        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        
+        return layoutAttributes
     }
     
     fileprivate func layerProperties() {
@@ -123,7 +134,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         layer.shadowRadius = 2
         layer.shadowColor = UIColor.black.cgColor
         layer.masksToBounds = false
-        layer.shouldRasterize = true // Ask iOS to ache the rendered shadow so that it oesn't need to be redrawn
+        layer.shouldRasterize = true // Ask iOS to cache the rendered shadow so that it doesn't need to be redrawn
         layer.rasterizationScale = UIScreen.main.scale
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell, Teacher>, UICollectionViewDelegateFlowLayout {
+class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell, Teacher> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,6 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
         let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
         NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (teachers: [Teacher]) in
             self.items = teachers
-            self.collectionView.reloadData()
             
             for (index, _) in self.items.enumerated() {
                 guard let teacherId = self.items[index].id else { return }
@@ -41,32 +40,10 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
                 NetworkingService.shared.fetchData(urlString: schoolUrl) { [unowned self] (schools: School) in
                     self.items[index].school = schools
                     
-                    DispatchQueue.main.async {
-                        self.collectionView.performBatchUpdates ({
-                            let indexPath = IndexPath(row: index, section: 0)
-                            self.collectionView.reloadItems(at: [indexPath])
-                        }, completion: { (finished: Bool) in
-                            UIViewPropertyAnimator(duration: 0.3, curve: .easeIn, animations: {
-                                self.collectionView.collectionViewLayout.invalidateLayout()
-                            }).startAnimation()
-                        })
-                    }
+                    self.collectionView.reloadData()
                 }
             }
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let leftPadding = UIApplication.shared.keyWindow!.safeAreaInsets.left
-        let rightPadding = UIApplication.shared.keyWindow!.safeAreaInsets.right
-        let screenWidth = UIScreen.main.bounds.width
-        var cellHeight = CGFloat()
-        
-        if let collectionViewCell = collectionView.cellForItem(at: indexPath) as? TeacherCell {
-            cellHeight = 20 + collectionViewCell.userInfoTextView.sizeThatFits(collectionViewCell.userInfoTextView.bounds.size).height + 20 + collectionViewCell.contactButton.frame.height
-        }
-        
-        return CGSize(width: screenWidth - leftPadding - rightPadding - 20, height: cellHeight)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

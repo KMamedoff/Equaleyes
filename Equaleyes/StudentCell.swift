@@ -19,7 +19,7 @@ class StudentCell: BaseCollectionViewCell<Student> {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    /*
     override var item: Student! {
         didSet {
             let mutableAttributedString = NSMutableAttributedString()
@@ -38,9 +38,9 @@ class StudentCell: BaseCollectionViewCell<Student> {
                 mutableAttributedString.append(schoolNameLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
             }
             
-            userInfoTextView.attributedText = mutableAttributedString
+            userInfoLabel.attributedText = mutableAttributedString
         }
     }
-    
+    */
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentsCollectionViewController: BaseCollectionViewController<StudentCell, Student>, UICollectionViewDelegateFlowLayout {
+class StudentsCollectionViewController: BaseCollectionViewController<StudentCell, Student> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,19 +54,6 @@ class StudentsCollectionViewController: BaseCollectionViewController<StudentCell
                 }
             }
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let leftPadding = UIApplication.shared.keyWindow!.safeAreaInsets.left
-        let rightPadding = UIApplication.shared.keyWindow!.safeAreaInsets.right
-        let screenWidth = UIScreen.main.bounds.width
-        var cellHeight = CGFloat()
-        
-        if let collectionViewCell = collectionView.cellForItem(at: indexPath) as? StudentCell {
-            cellHeight = 20 + collectionViewCell.userInfoTextView.sizeThatFits(collectionViewCell.userInfoTextView.bounds.size).height + 20
-        }
-        
-        return CGSize(width: screenWidth - leftPadding - rightPadding - 20, height: cellHeight)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectionViewController {
+class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "Base Cell"
     fileprivate var activityIndicator = UIActivityIndicatorView()
@@ -30,11 +30,10 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         collectionView?.contentInsetAdjustmentBehavior = .always
         
         let flow = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        flow.sectionInset = UIEdgeInsets(top: 16, left: 10, bottom: 16, right: 10)
-    }
-    
-    @objc(collectionView:layout:minimumLineSpacingForSectionAtIndex:) func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        flow.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        flow.minimumLineSpacing = 20
+        flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        //        flow.sectionInsetReference = .fromLayoutMargins
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -55,16 +54,27 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         return items.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+        let referenceHeight: CGFloat = 100
+        let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+            - sectionInset.left
+            - sectionInset.right
+            - collectionView.contentInset.left
+            - collectionView.contentInset.right
+        return CGSize(width: referenceWidth, height: referenceHeight)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCollectionViewCell<U>
 
-        cell.item = items[indexPath.row]
-
+        cell.configure(text: items[indexPath.row])
+        
         return cell
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionView?.collectionViewLayout.invalidateLayout()
+        self.collectionView.collectionViewLayout.invalidateLayout()
     }
     
 }
