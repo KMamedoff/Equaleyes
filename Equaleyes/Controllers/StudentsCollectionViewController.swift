@@ -27,7 +27,6 @@ class StudentsCollectionViewController: BaseCollectionViewController<StudentCell
         let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/students"
         NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (students: [Student]) in
             self.items = students
-            self.collectionView.reloadData()
             
             for (index, _) in self.items.enumerated() {
                 guard let teacherId = self.items[index].id else { return }
@@ -41,16 +40,7 @@ class StudentsCollectionViewController: BaseCollectionViewController<StudentCell
                 NetworkingService.shared.fetchData(urlString: schoolUrl) { [unowned self] (schools: School) in
                     self.items[index].school = schools
                     
-                    DispatchQueue.main.async {
-                        self.collectionView.performBatchUpdates ({
-                            let indexPath = IndexPath(row: index, section: 0)
-                            self.collectionView.reloadItems(at: [indexPath])
-                        }, completion: { (finished: Bool) in
-                            UIViewPropertyAnimator(duration: 0.3, curve: .easeIn, animations: {
-                                self.collectionView.collectionViewLayout.invalidateLayout()
-                            }).startAnimation()
-                        })
-                    }
+                    self.collectionView.reloadData()
                 }
             }
         }
