@@ -61,12 +61,6 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         return cell
     }
     
-    func reloadCollectionViewDataWithAnimation() {
-        UIView.transition(with: self.collectionView, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.collectionView.reloadData()
-        })
-    }
-    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView?.collectionViewLayout.invalidateLayout()
     }

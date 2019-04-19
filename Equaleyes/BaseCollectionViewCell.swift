@@ -97,7 +97,6 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         
         addSubview(userInfoTextView)
         userInfoTextView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        userInfoTextView.heightAnchor.constraint(equalToConstant: 100).isActive = true
 
         let horizontalSpace = NSLayoutConstraint(item: userInfoTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 20)
         let horizontalSpace2 = NSLayoutConstraint(item: userInfoTextView, attribute: .right, relatedBy: .equal, toItem: arrowImageView, attribute: .left, multiplier: 1, constant: -20)

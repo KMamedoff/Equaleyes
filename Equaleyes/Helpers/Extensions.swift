@@ -52,6 +52,16 @@ extension UIViewController {
     }
 }
 
+extension UICollectionViewController {
+    func reloadCollectionViewDataWithAnimation() {
+        UIView.transition(with: self.collectionView, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        })
+    }
+}
+
 extension UIImageView {
     func setImageWithKingfisher(with urlString: String, completion: @escaping (Result<RetrieveImageResult, KingfisherError>) -> ()) {
         guard let url = URL.init(string: urlString) else { return }
