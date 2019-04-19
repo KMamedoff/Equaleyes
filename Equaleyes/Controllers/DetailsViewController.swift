@@ -62,17 +62,17 @@ class DetailsViewController: UIViewController {
         
         // Short Info
         if let name = detailsData.name {
-            shortInfoMutableAttributedString.append("\(name)\n".customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append("\(name)\n".customAttributedString(font: Font.header, textColor: UIColor.darkGray))
         }
         
         if let teacherClass = detailsData.teacherClass {
             let teacherClassLocalizedString = "class".localizedString() + ": \(teacherClass)\n"
-            shortInfoMutableAttributedString.append(teacherClassLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append(teacherClassLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
         }
         
         if let schoolName = detailsData.school?.name {
             let schoolNameLocalizedString = "school".localizedString() + ": \(schoolName)"
-            shortInfoMutableAttributedString.append(schoolNameLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append(schoolNameLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
         }
         
         shortInfoTextView.attributedText = shortInfoMutableAttributedString
@@ -81,10 +81,10 @@ class DetailsViewController: UIViewController {
         if let description = detailsData.description {
             if description != "" {
                 let longInfoTitle = "details_about_title".localizedString() + "\n"
-                longInfoMutableAttributedString.append(longInfoTitle.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+                longInfoMutableAttributedString.append(longInfoTitle.customAttributedString(font: Font.header, textColor: UIColor.darkGray))
                 
                 let longInfoDescription = "\(description)"
-                longInfoMutableAttributedString.append(longInfoDescription.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+                longInfoMutableAttributedString.append(longInfoDescription.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
             }
         }
         
@@ -108,17 +108,17 @@ class DetailsViewController: UIViewController {
         
         // Short Info
         if let name = detailsData.name {
-            shortInfoMutableAttributedString.append("\(name)\n".customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append("\(name)\n".customAttributedString(font: Font.header, textColor: UIColor.darkGray))
         }
         
         if let grade = detailsData.grade {
             let teacherClassLocalizedString = "grade".localizedString() + ": \(grade)\n"
-            shortInfoMutableAttributedString.append(teacherClassLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append(teacherClassLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
         }
         
         if let schoolName = detailsData.school?.name {
             let schoolNameLocalizedString = "school".localizedString() + ": \(schoolName)"
-            shortInfoMutableAttributedString.append(schoolNameLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            shortInfoMutableAttributedString.append(schoolNameLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
         }
         
         shortInfoTextView.attributedText = shortInfoMutableAttributedString
@@ -127,10 +127,10 @@ class DetailsViewController: UIViewController {
         if let description = detailsData.description {
             if description != "" {
                 let longInfoTitle = "details_about_title".localizedString() + "\n"
-                longInfoMutableAttributedString.append(longInfoTitle.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+                longInfoMutableAttributedString.append(longInfoTitle.customAttributedString(font: Font.header, textColor: UIColor.darkGray))
                 
                 let longInfoDescription = "\(description)"
-                longInfoMutableAttributedString.append(longInfoDescription.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+                longInfoMutableAttributedString.append(longInfoDescription.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
             }
         }
         

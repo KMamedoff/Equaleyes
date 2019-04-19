@@ -32,9 +32,9 @@ extension UIApplication {
 }
 
 extension String {
-    func customAttributedString(fontName: String, fontSize: CGFloat, textColor: UIColor) -> NSMutableAttributedString {
+    func customAttributedString(font: UIFont, textColor: UIColor) -> NSMutableAttributedString {
         let attribute: [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: fontName, size: fontSize)!,
+            .font: font,
             .foregroundColor: textColor
         ]
         

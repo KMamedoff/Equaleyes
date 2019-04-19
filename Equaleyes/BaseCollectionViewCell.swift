@@ -36,14 +36,15 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         return userProfileImageView
     }()
     
-    let userInfoLabel: UILabel = {
-        let userInfoLabel = UILabel()
-        userInfoLabel.translatesAutoresizingMaskIntoConstraints = false
-        userInfoLabel.backgroundColor = .clear
-        userInfoLabel.isUserInteractionEnabled = false
-        userInfoLabel.numberOfLines = 0
-        userInfoLabel.lineBreakMode = .byWordWrapping
-        return userInfoLabel
+    let userInfoTextView: UITextViewFixed = {
+        let userInfoTextView = UITextViewFixed()
+        userInfoTextView.translatesAutoresizingMaskIntoConstraints = false
+        userInfoTextView.isUserInteractionEnabled = false
+        userInfoTextView.isEditable = false
+        userInfoTextView.isScrollEnabled = false
+        userInfoTextView.isSelectable = false
+        
+        return userInfoTextView
     }()
     
     let arrowImageView: UIImageView = {
@@ -61,7 +62,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         contactButton.translatesAutoresizingMaskIntoConstraints = false
         contactButton.layer.masksToBounds = true
         contactButton.layer.cornerRadius = 16
-        contactButton.titleLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 14)
+        contactButton.titleLabel?.font = Font.contact
         contactButton.setTitle("contact_button_title".localizedString(), for: .normal)
         contactButton.setTitleColor(.white, for: .normal)
         contactButton.setTitleColor(.lightGray, for: .highlighted)
@@ -101,16 +102,13 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         NSLayoutConstraint.activate([horConstraint])
         contactButton.addTarget(self, action: #selector(contactButtonAction), for: .touchUpInside)
         
-        addSubview(userInfoLabel)
-        userInfoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        userInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -55).isActive = true
+        addSubview(userInfoTextView)
+        userInfoTextView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        userInfoTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -55).isActive = true
         
-        let horizontalSpace = NSLayoutConstraint(item: userInfoLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 20)
-        let horizontalSpace2 = NSLayoutConstraint(item: userInfoLabel, attribute: .right, relatedBy: .equal, toItem: arrowImageView, attribute: .left, multiplier: 1, constant: -20)
+        let horizontalSpace = NSLayoutConstraint(item: userInfoTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 20)
+        let horizontalSpace2 = NSLayoutConstraint(item: userInfoTextView, attribute: .right, relatedBy: .equal, toItem: arrowImageView, attribute: .left, multiplier: 1, constant: -20)
         NSLayoutConstraint.activate([horizontalSpace, horizontalSpace2])
-        
-        userInfoLabel.backgroundColor = .groupTableViewBackground
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -122,7 +120,6 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        userInfoLabel.preferredMaxLayoutWidth = layoutAttributes.size.width - contentView.layoutMargins.left - contentView.layoutMargins.right
         layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         
         return layoutAttributes

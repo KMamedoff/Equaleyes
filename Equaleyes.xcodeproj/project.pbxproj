@@ -29,6 +29,7 @@
 		7B8DBF972267314500E5302E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8DBF9A2267314500E5302E /* Localizable.strings */; };
 		7B8DBF982267314500E5302E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8DBF9A2267314500E5302E /* Localizable.strings */; };
 		7B8DBFA42267454600E5302E /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8DBFA32267454600E5302E /* Tests.swift */; };
+		7BA71098226A811F004CB181 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA71097226A811E004CB181 /* Fonts.swift */; };
 		7BB34683226A3B0200C9B814 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB34682226A3B0200C9B814 /* StudentCell.swift */; };
 		7BB34685226A3C5400C9B814 /* StudentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB34684226A3C5400C9B814 /* StudentsCollectionViewController.swift */; };
 		7BDCBB54226720F5009CA101 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C1D912265411E00AF5E3D /* Structs.swift */; };
@@ -89,6 +90,7 @@
 		7B8DBF992267314500E5302E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B8DBF9B2267314900E5302E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B8DBFA32267454600E5302E /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		7BA71097226A811E004CB181 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		7BB34682226A3B0200C9B814 /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentCell.swift; path = ../StudentCell.swift; sourceTree = "<group>"; };
 		7BB34684226A3C5400C9B814 /* StudentsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsCollectionViewController.swift; sourceTree = "<group>"; };
 		7BDCBB67226720F5009CA101 /* Equaleyes Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Equaleyes Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 				7B5C1D912265411E00AF5E3D /* Structs.swift */,
 				7B5C1D932265E48900AF5E3D /* Extensions.swift */,
 				7B808E1B2267B78500E2E061 /* Classes.swift */,
+				7BA71097226A811E004CB181 /* Fonts.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BA71098226A811F004CB181 /* Fonts.swift in Sources */,
 				7B64ED6722694EAC00CEE22D /* TeacherCell.swift in Sources */,
 				7B5C1D922265411E00AF5E3D /* Structs.swift in Sources */,
 				7B5C1D522264BD4D00AF5E3D /* AppDelegate.swift in Sources */,

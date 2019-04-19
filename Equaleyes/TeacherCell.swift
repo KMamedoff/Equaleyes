@@ -33,20 +33,20 @@ class TeacherCell: BaseCollectionViewCell<Teacher> {
         let mutableAttributedString = NSMutableAttributedString()
         
         if let name = text?.name {
-            mutableAttributedString.append("\(name)\n".customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 24, textColor: UIColor.darkGray))
+            mutableAttributedString.append("\(name)\n".customAttributedString(font: Font.header, textColor: UIColor.darkGray))
         }
         
         if let teacherClass = text?.teacherClass {
             let teacherClassLocalizedString = "class".localizedString() + ": \(teacherClass)\n"
-            mutableAttributedString.append(teacherClassLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            mutableAttributedString.append(teacherClassLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
         }
         
         if let schoolName = text?.school?.name {
             let schoolNameLocalizedString = "school".localizedString() + ": \(schoolName)"
-            mutableAttributedString.append(schoolNameLocalizedString.customAttributedString(fontName: "AvenirNextCondensed-Medium", fontSize: 14, textColor: UIColor.darkGray))
+            mutableAttributedString.append(schoolNameLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
         }
         
-        userInfoLabel.attributedText = mutableAttributedString
+        userInfoTextView.attributedText = mutableAttributedString
     }
     
 }
