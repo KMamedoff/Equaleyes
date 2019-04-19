@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 class DetailsViewController: UIViewController {
-
+    
     @IBOutlet weak var portraitImageViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var shortInfoTextView: UITextViewFixed!

@@ -39,6 +39,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
     let userInfoTextView: UITextViewFixed = {
         let userInfoTextView = UITextViewFixed()
         userInfoTextView.translatesAutoresizingMaskIntoConstraints = false
+        userInfoTextView.backgroundColor = .clear
         userInfoTextView.isUserInteractionEnabled = false
         userInfoTextView.isEditable = false
         userInfoTextView.isScrollEnabled = false
@@ -71,6 +72,9 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         return contactButton
     }()
     
+    var textViewBottomAnchor: NSLayoutConstraint!
+
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -102,9 +106,12 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         NSLayoutConstraint.activate([horConstraint])
         contactButton.addTarget(self, action: #selector(contactButtonAction), for: .touchUpInside)
         
+        
+        
         addSubview(userInfoTextView)
         userInfoTextView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        userInfoTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -55).isActive = true
+        textViewBottomAnchor = userInfoTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+        textViewBottomAnchor.isActive = true
         
         let horizontalSpace = NSLayoutConstraint(item: userInfoTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 20)
         let horizontalSpace2 = NSLayoutConstraint(item: userInfoTextView, attribute: .right, relatedBy: .equal, toItem: arrowImageView, attribute: .left, multiplier: 1, constant: -20)

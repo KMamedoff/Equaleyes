@@ -12,6 +12,9 @@ class TeacherCell: BaseCollectionViewCell<Teacher> {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+                
+        self.contactButton.isHidden = false
+        textViewBottomAnchor.constant = -55
     }
     
     required init?(coder aDecoder: NSCoder) {
