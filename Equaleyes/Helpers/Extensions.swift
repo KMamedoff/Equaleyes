@@ -54,11 +54,9 @@ extension UIViewController {
 
 extension UIImageView {
     func setImageWithKingfisher(with urlString: String, completion: @escaping (Result<RetrieveImageResult, KingfisherError>) -> ()) {
-        guard let url = URL.init(string: urlString) else { return }
-        let resource = ImageResource(downloadURL: url, cacheKey: urlString)
         var kf = self.kf
         kf.indicatorType = .activity
-        self.kf.setImage(with: resource) { result in
+        kf.setImage(with: URL(string: urlString)) { result in
             completion(result)
         }
     }

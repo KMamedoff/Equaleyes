@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 enum Environment: String {
     case production
     case development
@@ -22,12 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        selectProductionEnvironment()
+        selectAppEnvironment()
+        
+        #warning("REMOVE THIS")
+        let cache = ImageCache.default
+        cache.clearMemoryCache()
+        cache.clearDiskCache { print("Done") }
         
         return true
     }
     
-    fileprivate func selectProductionEnvironment() {
+    fileprivate func selectAppEnvironment() {
         #if DEVELOPMENT
         environment = .development
         #else

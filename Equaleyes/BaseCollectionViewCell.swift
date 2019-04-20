@@ -106,8 +106,6 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         NSLayoutConstraint.activate([horConstraint])
         contactButton.addTarget(self, action: #selector(contactButtonAction), for: .touchUpInside)
         
-        
-        
         addSubview(userInfoTextView)
         userInfoTextView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
         textViewBottomAnchor = userInfoTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)

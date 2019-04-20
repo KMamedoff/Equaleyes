@@ -7,14 +7,14 @@
 //
 
 import UIKit
-
+import Kingfisher
 class TeacherCell: BaseCollectionViewCell<Teacher> {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
         self.contactButton.isHidden = false
-        textViewBottomAnchor.constant = -55
+        textViewBottomAnchor.constant = -35
     }
     
     required init?(coder aDecoder: NSCoder) {
