@@ -43,8 +43,11 @@ class StudentsCollectionViewController: BaseCollectionViewController<StudentCell
                     self.items[index].school = schools
                     
                     self.collectionView.performBatchUpdates({
-                        self.collectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
-                    }, completion: nil)
+                        let indexPath = IndexPath(item: index, section: 0)
+                        self.collectionView.reloadItems(at: [indexPath])
+                    }, completion: { (finished: Bool) in
+                        self.collectionView.collectionViewLayout.invalidateLayout()
+                    })
                 }
             }
         }
