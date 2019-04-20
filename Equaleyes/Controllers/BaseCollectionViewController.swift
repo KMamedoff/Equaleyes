@@ -33,7 +33,6 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         flow.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         flow.minimumLineSpacing = 20
         flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        //        flow.sectionInsetReference = .fromLayoutMargins
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

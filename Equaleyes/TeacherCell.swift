@@ -13,8 +13,12 @@ class TeacherCell: BaseCollectionViewCell<Teacher> {
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
+        textViewBottomAnchor = userInfoTextView.bottomAnchor.constraint(equalTo: contactButton.topAnchor, constant: -10)
+        textViewBottomAnchor.isActive = true
+        
         self.contactButton.isHidden = false
-        textViewBottomAnchor.constant = -35
+        
+        self.layoutIfNeeded()
     }
     
     required init?(coder aDecoder: NSCoder) {

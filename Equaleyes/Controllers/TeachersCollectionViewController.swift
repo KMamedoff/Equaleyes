@@ -45,8 +45,6 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
                     self.collectionView.performBatchUpdates({
                         let indexPath = IndexPath(item: index, section: 0)
                         self.collectionView.reloadItems(at: [indexPath])
-                    }, completion: { (finished: Bool) in
-                        self.collectionView.collectionViewLayout.invalidateLayout()
                     })
                 }
             }
