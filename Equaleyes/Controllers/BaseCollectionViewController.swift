@@ -55,7 +55,7 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
-        let referenceHeight: CGFloat = 100
+        let referenceHeight: CGFloat = 110
         let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
             - sectionInset.left
             - sectionInset.right
@@ -70,10 +70,6 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         cell.configure(text: items[indexPath.row])
         
         return cell
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.collectionView.collectionViewLayout.invalidateLayout()
     }
     
 }
