@@ -147,7 +147,7 @@ class DetailsViewController: UIViewController {
             self.portraitImageViewConstraint.constant = UIScreen.main.bounds.height * 0.4
         }
         
-        UIView.animate(withDuration: 0.1) {
+        UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
     }
