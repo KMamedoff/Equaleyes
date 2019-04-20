@@ -16,7 +16,7 @@ class TeacherCell: BaseCollectionViewCell<Teacher> {
         textViewBottomAnchor = userInfoTextView.bottomAnchor.constraint(equalTo: contactButton.topAnchor, constant: -10)
         textViewBottomAnchor.isActive = true
         
-        self.contactButton.isHidden = false
+        contactButton.isHidden = false
         
         self.layoutIfNeeded()
     }

@@ -26,32 +26,28 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
     fileprivate func fetchData() {
         let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
         NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (teachers: [Teacher]) in
+            teachers.forEach { self.items.append($0) }
+            
             var indexPathArray = [IndexPath]()
             
-            teachers.forEach {
-                self.items.append($0)
-                indexPathArray.append(IndexPath(item: self.items.count - 1, section: 0))
-            }
-            
-            UIView.performWithoutAnimation {
-                self.collectionView.insertItems(at: indexPathArray)
-            }
-            
-            for (index, _) in self.items.enumerated() {
-                guard let teacherId = self.items[index].id else { return }
+            for (index, _) in teachers.enumerated() {
+                guard let teacherId = self.items[(self.items.count - 1) - index].id else { return }
                 let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers/\(teacherId)"
                 NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { [unowned self] (descriptions: Teacher) in
-                    self.items[index].description = descriptions.description
+                    self.items[(self.items.count - 1) - index].description = descriptions.description
                 }
                 
-                guard let schoolId = self.items[index].schoolId else { return }
+                guard let schoolId = self.items[(self.items.count - 1) - index].schoolId else { return }
                 let schoolUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
                 NetworkingService.shared.fetchData(urlString: schoolUrl) { [unowned self] (schools: School) in
-                    self.items[index].school = schools
+                    self.items[(self.items.count - 1) - index].school = schools
                     
-                    UIView.performWithoutAnimation {
-                        let indexPath = IndexPath(item: index, section: 0)
-                        self.collectionView.reloadItems(at: [indexPath])
+                    indexPathArray.append(IndexPath(item: (self.items.count - 1) - index, section: 0))
+                    
+                    if indexPathArray.count == teachers.count {
+                        UIView.performWithoutAnimation {
+                            self.collectionView.insertItems(at: indexPathArray)
+                        }
                     }
                 }
             }

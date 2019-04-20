@@ -107,13 +107,10 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         
         addSubview(userInfoTextView)
         userInfoTextView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        textViewBottomAnchor = userInfoTextView.bottomAnchor.constraint(equalTo: contactButton.topAnchor, constant: -10)
         
         let horizontalSpace = NSLayoutConstraint(item: userInfoTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 20)
         let horizontalSpace2 = NSLayoutConstraint(item: userInfoTextView, attribute: .right, relatedBy: .equal, toItem: arrowImageView, attribute: .left, multiplier: 1, constant: -20)
         NSLayoutConstraint.activate([horizontalSpace, horizontalSpace2])
-        
-        self.layoutIfNeeded()
     }
     
     required init?(coder aDecoder: NSCoder) {

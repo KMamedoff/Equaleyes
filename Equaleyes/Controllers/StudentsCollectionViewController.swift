@@ -26,32 +26,28 @@ class StudentsCollectionViewController: BaseCollectionViewController<StudentCell
     fileprivate func fetchData() {
         let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/students"
         NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (students: [Student]) in
+            students.forEach { self.items.append($0) }
+            
             var indexPathArray = [IndexPath]()
             
-            students.forEach {
-                self.items.append($0)
-                indexPathArray.append(IndexPath(item: self.items.count - 1, section: 0))
-            }
-            
-            UIView.performWithoutAnimation {
-                self.collectionView.insertItems(at: indexPathArray)
-            }
-            
-            for (index, _) in self.items.enumerated() {
-                guard let teacherId = self.items[index].id else { return }
-                let teacherDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/students/\(teacherId)"
-                NetworkingService.shared.fetchData(urlString: teacherDescriptionUrl) { [unowned self] (descriptions: Student) in
-                    self.items[index].description = descriptions.description
+            for (index, _) in students.enumerated() {
+                guard let studentId = self.items[(self.items.count - 1) - index].id else { return }
+                let studentDescriptionUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/students/\(studentId)"
+                NetworkingService.shared.fetchData(urlString: studentDescriptionUrl) { [unowned self] (descriptions: Student) in
+                    self.items[(self.items.count - 1) - index].description = descriptions.description
                 }
                 
-                guard let schoolId = self.items[index].schoolId else { return }
+                guard let schoolId = students[(self.items.count - 1) - index].schoolId else { return }
                 let schoolUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/schools/\(schoolId)"
                 NetworkingService.shared.fetchData(urlString: schoolUrl) { [unowned self] (schools: School) in
-                    self.items[index].school = schools
+                    self.items[(self.items.count - 1) - index].school = schools
                     
-                    UIView.performWithoutAnimation {
-                        let indexPath = IndexPath(item: index, section: 0)
-                        self.collectionView.reloadItems(at: [indexPath])
+                    indexPathArray.append(IndexPath(item: (self.items.count - 1) - index, section: 0))
+                    
+                    if indexPathArray.count == students.count {
+                        UIView.performWithoutAnimation {
+                            self.collectionView.insertItems(at: indexPathArray)
+                        }
                     }
                 }
             }
