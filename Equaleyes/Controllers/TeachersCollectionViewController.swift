@@ -26,9 +26,16 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
     fileprivate func fetchData() {
         let teacherUrl = "https://zpk2uivb1i.execute-api.us-east-1.amazonaws.com/dev/teachers"
         NetworkingService.shared.fetchData(urlString: teacherUrl) { [unowned self] (teachers: [Teacher]) in
-            self.items = teachers
+            var indexPathArray = [IndexPath]()
             
-            self.collectionView.reloadData()
+            teachers.forEach {
+                self.items.append($0)
+                indexPathArray.append(IndexPath(item: self.items.count - 1, section: 0))
+            }
+            
+            UIView.performWithoutAnimation {
+                self.collectionView.insertItems(at: indexPathArray)
+            }
             
             for (index, _) in self.items.enumerated() {
                 guard let teacherId = self.items[index].id else { return }
@@ -42,10 +49,10 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
                 NetworkingService.shared.fetchData(urlString: schoolUrl) { [unowned self] (schools: School) in
                     self.items[index].school = schools
                     
-                    self.collectionView.performBatchUpdates({
+                    UIView.performWithoutAnimation {
                         let indexPath = IndexPath(item: index, section: 0)
                         self.collectionView.reloadItems(at: [indexPath])
-                    })
+                    }
                 }
             }
         }
