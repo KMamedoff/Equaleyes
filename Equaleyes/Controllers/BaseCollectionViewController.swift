@@ -39,7 +39,8 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         collectionView?.dataSource = self
         collectionView?.delaysContentTouches = false // A "fix" for Contact button
         collectionView?.contentInsetAdjustmentBehavior = .always
-        
+        collectionView?.bounces = true
+        collectionView?.alwaysBounceVertical = true
         collectionView?.collectionViewLayout = layout
     }
     
