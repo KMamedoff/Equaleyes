@@ -49,9 +49,11 @@ extension UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         actions.forEach { alertController.addAction($0) }
         
-        alertController.popoverPresentationController?.sourceView = sender
-        alertController.popoverPresentationController?.sourceRect = sender.bounds
-        
+        if let popoverPresentationController = alertController.popoverPresentationController {
+            popoverPresentationController.sourceView = sender
+            popoverPresentationController.sourceRect = sender.bounds
+        }
+                
         self.present(alertController, animated: true, completion: nil)
     }
 }
