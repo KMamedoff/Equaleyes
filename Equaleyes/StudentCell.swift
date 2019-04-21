@@ -44,4 +44,3 @@ class StudentCell: BaseCollectionViewCell<Student> {
     }
     
 }
-

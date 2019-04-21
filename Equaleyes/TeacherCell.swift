@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+
 class TeacherCell: BaseCollectionViewCell<Teacher> {
     
     override init(frame: CGRect) {
