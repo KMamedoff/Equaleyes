@@ -10,7 +10,7 @@ import UIKit
 
 class ContactActionSheet {
     static func presentContactActionSheet() {
-        UIApplication.topViewController()?.customContactAlert(title: "contact_button_title".localizedString(), message: nil, preferredStyle: .actionSheet, actions: [
+        UIApplication.topViewController()!.customContactAlert(topViewControllerView: UIApplication.topViewController()!.view!, title: "contact_button_title".localizedString(), message: nil, preferredStyle: .actionSheet, actions: [
             UIAlertAction(title: "contact_email".localizedString(), style: .default) { action in },
             UIAlertAction(title: "contact_message".localizedString(), style: .default) { action in },
             UIAlertAction(title: "contact_call".localizedString(), style: .default) { action in },
