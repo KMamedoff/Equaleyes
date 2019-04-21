@@ -13,12 +13,9 @@ class TeacherCell: BaseCollectionViewCell<Teacher> {
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
-        textViewBottomAnchor = userInfoTextView.bottomAnchor.constraint(equalTo: contactButton.topAnchor, constant: -10)
-        textViewBottomAnchor.isActive = true
-        
-        contactButton.isHidden = false
-        
-        self.layoutIfNeeded()
+        if let lastSubview = contentView.subviews.last {
+            contentView.bottomAnchor.constraint(equalTo: lastSubview.bottomAnchor, constant: 20).isActive = true
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,7 +50,7 @@ class TeacherCell: BaseCollectionViewCell<Teacher> {
             mutableAttributedString.append(schoolNameLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
         }
         
-        userInfoTextView.attributedText = mutableAttributedString
+        userInfoLabel.attributedText = mutableAttributedString
     }
     
 }

@@ -45,9 +45,11 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
                     indexPathArray.append(IndexPath(item: (self.items.count - 1) - index, section: 0))
                     
                     if indexPathArray.count == teachers.count {
-                        UIView.performWithoutAnimation {
+                        self.collectionView.performBatchUpdates({
                             self.collectionView.insertItems(at: indexPathArray)
-                        }
+                        }, completion: { (finished) in
+                            self.fetchData()
+                        })
                     }
                 }
             }

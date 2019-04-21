@@ -15,6 +15,17 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
 
     var items = [U]()
     
+    var layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        layout.minimumLineSpacing = 20
+        
+        let width = UIScreen.main.bounds.size.width - layout.sectionInset.left - layout.sectionInset.right
+        layout.estimatedItemSize = CGSize(width: width, height: 10)
+        
+        return layout
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,10 +40,7 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         collectionView?.delaysContentTouches = false // A "fix" for Contact button
         collectionView?.contentInsetAdjustmentBehavior = .always
         
-        let flow = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        flow.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        flow.minimumLineSpacing = 20
-        flow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        collectionView?.collectionViewLayout = layout
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -53,20 +61,21 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         return items.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
-        let referenceHeight: CGFloat = 100
-        let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
-            - sectionInset.left
-            - sectionInset.right
-            - collectionView.contentInset.left
-            - collectionView.contentInset.right
-        return CGSize(width: referenceWidth, height: referenceHeight)
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        layout.estimatedItemSize = CGSize(width: view.bounds.size.width - 32, height: 10)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        layout.invalidateLayout()
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseCollectionViewCell<U>
-
+        
         cell.configure(text: items[indexPath.row])
         
         return cell

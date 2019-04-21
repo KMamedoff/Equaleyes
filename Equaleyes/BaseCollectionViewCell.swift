@@ -36,16 +36,14 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         return userProfileImageView
     }()
     
-    let userInfoTextView: UITextViewFixed = {
-        let userInfoTextView = UITextViewFixed()
-        userInfoTextView.translatesAutoresizingMaskIntoConstraints = false
-        userInfoTextView.backgroundColor = .clear
-        userInfoTextView.isUserInteractionEnabled = false
-        userInfoTextView.isEditable = false
-        userInfoTextView.isScrollEnabled = false
-        userInfoTextView.isSelectable = false
+    let userInfoLabel: UILabel = {
+        let userInfoLabel = UILabel()
+        userInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        userInfoLabel.backgroundColor = .clear
+        userInfoLabel.isUserInteractionEnabled = false
+        userInfoLabel.numberOfLines = 0
         
-        return userInfoTextView
+        return userInfoLabel
     }()
     
     let arrowImageView: UIImageView = {
@@ -72,59 +70,31 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         return contactButton
     }()
     
-    var textViewBottomAnchor: NSLayoutConstraint!
+    lazy var width: NSLayoutConstraint = {
+        let width = contentView.widthAnchor.constraint(equalToConstant: bounds.size.width)
+        width.isActive = true
+        
+        return width
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         layerProperties()
-        
-        addSubview(roundedBackgroundView)
-        roundedBackgroundView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        roundedBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        roundedBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        roundedBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-        addSubview(userProfileImageView)
-        userProfileImageView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        userProfileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        userProfileImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        userProfileImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-
-        addSubview(arrowImageView)
-        arrowImageView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
-        arrowImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
-        arrowImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        arrowImageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        
-        addSubview(contactButton)
-        contactButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15).isActive = true
-        contactButton.widthAnchor.constraint(equalTo: roundedBackgroundView.widthAnchor, multiplier: 0.44).isActive = true
-        contactButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        let horConstraint = NSLayoutConstraint(item: contactButton, attribute: .centerX, relatedBy: .equal, toItem: roundedBackgroundView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-        NSLayoutConstraint.activate([horConstraint])
-        contactButton.addTarget(self, action: #selector(contactButtonAction), for: .touchUpInside)
-        
-        addSubview(userInfoTextView)
-        userInfoTextView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        
-        let horizontalSpace = NSLayoutConstraint(item: userInfoTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 20)
-        let horizontalSpace2 = NSLayoutConstraint(item: userInfoTextView, attribute: .right, relatedBy: .equal, toItem: arrowImageView, attribute: .left, multiplier: 1, constant: -20)
-        NSLayoutConstraint.activate([horizontalSpace, horizontalSpace2])
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(text: U!) {
-        
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        width.constant = bounds.size.width
+        return contentView.systemLayoutSizeFitting(CGSize(width: targetSize.width, height: 1))
     }
     
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+    func configure(text: U!) {
         
-        return layoutAttributes
     }
     
     fileprivate func layerProperties() {
@@ -135,6 +105,39 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         layer.masksToBounds = false
         layer.shouldRasterize = true // Ask iOS to cache the rendered shadow so that it doesn't need to be redrawn
         layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    fileprivate func setupViews() {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.addSubview(roundedBackgroundView)
+        roundedBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        roundedBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        roundedBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        roundedBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        contentView.addSubview(userProfileImageView)
+        userProfileImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        userProfileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+        userProfileImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        userProfileImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        
+        contentView.addSubview(arrowImageView)
+        arrowImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
+        arrowImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+        arrowImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+        arrowImageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
+        
+        contentView.addSubview(userInfoLabel)
+        userInfoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        userInfoLabel.leadingAnchor.constraint(equalTo: userProfileImageView.trailingAnchor, constant: 20).isActive = true
+        userInfoLabel.trailingAnchor.constraint(equalTo: arrowImageView.leadingAnchor, constant: -20).isActive = true
+        
+        contentView.addSubview(contactButton)
+        contactButton.topAnchor.constraint(equalTo: userInfoLabel.bottomAnchor, constant: 10).isActive = true
+        contactButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        contactButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        contactButton.widthAnchor.constraint(equalToConstant: contentView.bounds.width * 0.44).isActive = true
     }
     
     @objc func contactButtonAction(_ sender: Any) {
