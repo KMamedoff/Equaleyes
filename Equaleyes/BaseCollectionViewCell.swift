@@ -143,7 +143,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
     }
     
     @objc func contactButtonAction(_ sender: Any) {
-        ContactActionSheet.presentContactActionSheet()
+        ContactActionSheet.presentContactActionSheet(sender: contactButton)
     }
     
 }

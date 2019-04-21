@@ -153,6 +153,6 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func contactButtonAction(_ sender: UIButton) {
-        ContactActionSheet.presentContactActionSheet()
+        ContactActionSheet.presentContactActionSheet(sender: contactButtonOutlet)
     }
 }

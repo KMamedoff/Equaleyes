@@ -45,13 +45,12 @@ extension String {
 }
 
 extension UIViewController {
-    func customContactAlert(topViewControllerView: UIView, title: String?, message: String?, preferredStyle: UIAlertController.Style, actions: [UIAlertAction]) {
+    func customContactAlert(sender: UIView, title: String?, message: String?, preferredStyle: UIAlertController.Style, actions: [UIAlertAction]) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         actions.forEach { alertController.addAction($0) }
         
-        alertController.popoverPresentationController?.permittedArrowDirections = []
-        alertController.popoverPresentationController?.sourceView = topViewControllerView
-        alertController.popoverPresentationController?.sourceRect = topViewControllerView.bounds
+        alertController.popoverPresentationController?.sourceView = sender
+        alertController.popoverPresentationController?.sourceRect = sender.bounds
         
         self.present(alertController, animated: true, completion: nil)
     }
