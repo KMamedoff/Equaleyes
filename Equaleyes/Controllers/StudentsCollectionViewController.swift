@@ -49,7 +49,7 @@ class StudentsCollectionViewController: BaseCollectionViewController<StudentCell
                             self.collectionView.performBatchUpdates({
                                 self.collectionView.insertItems(at: indexPathArray)
                             }, completion: { (finished) in
-                                self.fetchData()
+                                
                             })
                         }
                     }
