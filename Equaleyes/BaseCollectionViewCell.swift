@@ -66,7 +66,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         contactButton.setTitleColor(.white, for: .normal)
         contactButton.setTitleColor(.lightGray, for: .highlighted)
         contactButton.backgroundColor = UIColor(red:0.15, green:0.13, blue:0.37, alpha:1.00)
-
+        
         return contactButton
     }()
     
@@ -138,6 +138,8 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         contactButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         contactButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         contactButton.widthAnchor.constraint(equalToConstant: contentView.bounds.width * 0.44).isActive = true
+        
+        contactButton.addTarget(self, action: #selector(contactButtonAction), for: .touchUpInside)
     }
     
     @objc func contactButtonAction(_ sender: Any) {
