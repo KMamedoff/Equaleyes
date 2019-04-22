@@ -138,13 +138,13 @@ class DetailsViewController: UIViewController {
     }
     
     fileprivate func resizeImageView(_ value: RetrieveImageResult) {
-        let imageViewSize = infoImageView.frame.size
-        let imageAspectRatio = value.image.size.height / value.image.size.width
+        let infoImageViewSize = UIScreen.main.bounds.size
+        let infoImageAspectRatio = value.image.size.height / value.image.size.width
         
-        self.portraitImageViewConstraint.constant = imageViewSize.width * imageAspectRatio
+        portraitImageViewConstraint.constant = infoImageViewSize.width * infoImageAspectRatio
         
-        if self.portraitImageViewConstraint.constant >= UIScreen.main.bounds.height * 0.4 {
-            self.portraitImageViewConstraint.constant = UIScreen.main.bounds.height * 0.4
+        if portraitImageViewConstraint.constant >= UIScreen.main.bounds.height * 0.4 {
+            portraitImageViewConstraint.constant = UIScreen.main.bounds.height * 0.4
         }
         
         UIView.animate(withDuration: 0.2) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hZ9-qb-s17">
-    <device id="ipad12_9" orientation="landscape">
-        <adaptation id="splitview1_3"/>
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
@@ -35,7 +35,7 @@
                     <tabBarItem key="tabBarItem" title="Teachers" image="Account Circle" id="SwL-8K-2nv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5ho-1Z-diR">
-                        <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -52,7 +52,7 @@
             <objects>
                 <collectionViewController id="7eP-gI-BbJ" customClass="TeachersCollectionViewController" customModule="Equaleyes" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Nxe-Oh-8uJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90197288990020752" green="0.90193891525268555" blue="0.90196198225021362" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dK5-LP-m4d">
@@ -82,11 +82,11 @@
             <objects>
                 <viewController title="Details" hidesBottomBarWhenPushed="YES" id="xsw-FR-myQ" customClass="DetailsViewController" customModule="Equaleyes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DCz-f0-G8C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kMu-wQ-sMH" userLabel="Image View">
-                                <rect key="frame" x="0.0" y="70" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="100"/>
                                 <color key="backgroundColor" red="0.90197288990020752" green="0.90193891525268555" blue="0.90196198225021362" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="95B-s6-kqf"/>
@@ -103,16 +103,16 @@
                                 </variation>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yuo-GM-Ktf" userLabel="Content Container View">
-                                <rect key="frame" x="0.0" y="170" width="375" height="854"/>
+                                <rect key="frame" x="0.0" y="188" width="375" height="590"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aun-ZG-gZE" userLabel="Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="8" width="214.5" height="67"/>
+                                        <rect key="frame" x="20" y="8" width="214.66666666666666" height="67"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NG-iq-Pcf">
-                                        <rect key="frame" x="242.5" y="8" width="112.5" height="34"/>
+                                        <rect key="frame" x="242.66666666666666" y="8" width="112.33333333333334" height="34"/>
                                         <color key="backgroundColor" red="0.14380401370000001" green="0.1299412251" blue="0.35688281059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
                                         <state key="normal" title="Contact">
@@ -135,7 +135,7 @@
                                         </constraints>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dm-di-cj3" userLabel="Info Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="85" width="335" height="150.5"/>
+                                        <rect key="frame" x="20" y="84.999999999999986" width="335" height="150.66666666666663"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -263,7 +263,7 @@
                     <tabBarItem key="tabBarItem" title="Students" image="Face" id="Qof-gO-eEM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qu1-4f-87p">
-                        <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -280,7 +280,7 @@
             <objects>
                 <collectionViewController id="Rjn-fe-62K" customClass="StudentsCollectionViewController" customModule="Equaleyes" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="U3x-k9-6KH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90197288990000002" green="0.90193891530000003" blue="0.90196198230000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rw8-CC-HfK">
