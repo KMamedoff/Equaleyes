@@ -137,7 +137,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         contactButton.topAnchor.constraint(equalTo: userInfoLabel.bottomAnchor, constant: 10).isActive = true
         contactButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         contactButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        contactButton.widthAnchor.constraint(equalToConstant: contentView.bounds.width * 0.44).isActive = true
+        contactButton.widthAnchor.constraint(equalToConstant: 160).isActive = true
         
         contactButton.addTarget(self, action: #selector(contactButtonAction), for: .touchUpInside)
     }

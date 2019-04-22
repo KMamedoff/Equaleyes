@@ -20,8 +20,7 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         layout.minimumLineSpacing = 20
         
-        let width = UIScreen.main.bounds.size.width - layout.sectionInset.left - layout.sectionInset.right
-        layout.estimatedItemSize = CGSize(width: width, height: 10)
+        layout.estimatedItemSize = CGSize(width: 10, height: 10)
         
         return layout
     }()
@@ -65,7 +64,7 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
-        layout.estimatedItemSize = CGSize(width: view.bounds.size.width - 32, height: 10)
+        layout.estimatedItemSize = CGSize(width: collectionView!.safeAreaLayoutGuide.layoutFrame.width - layout.sectionInset.left - layout.sectionInset.right, height: 10)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
