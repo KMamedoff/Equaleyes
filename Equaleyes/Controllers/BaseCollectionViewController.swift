@@ -19,7 +19,6 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         layout.minimumLineSpacing = 20
-//        layout.estimatedItemSize = CGSize(width: 10, height: 10)
         
         return layout
     }()

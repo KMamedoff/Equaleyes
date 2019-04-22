@@ -26,6 +26,8 @@ class StudentCell: BaseCollectionViewCell<Student> {
     override func configure(text: Student!) {
         let mutableAttributedString = NSMutableAttributedString()
         
+        userProfileImageView.image = UIImage(named: "No Image")
+        
         if let name = text?.name {
             mutableAttributedString.append("\(name)\n".customAttributedString(font: Font.header, textColor: UIColor.darkGray))
         }

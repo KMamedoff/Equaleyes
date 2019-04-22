@@ -39,6 +39,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="view.backgroundColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="7eP-gI-BbJ" kind="relationship" relationship="rootViewController" id="X09-aG-ggw"/>
                     </connections>
@@ -86,33 +91,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kMu-wQ-sMH" userLabel="Image View">
-                                <rect key="frame" x="0.0" y="88" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="120"/>
                                 <color key="backgroundColor" red="0.90197288990020752" green="0.90193891525268555" blue="0.90196198225021362" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="95B-s6-kqf"/>
+                                    <constraint firstAttribute="height" constant="120" id="6MU-88-e6i"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="95B-s6-kqf"/>
+                                        <exclude reference="6MU-88-e6i"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="95B-s6-kqf"/>
+                                        <include reference="6MU-88-e6i"/>
                                     </mask>
                                 </variation>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yuo-GM-Ktf" userLabel="Content Container View">
-                                <rect key="frame" x="0.0" y="188" width="375" height="590"/>
+                                <rect key="frame" x="0.0" y="208" width="375" height="570"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aun-ZG-gZE" userLabel="Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="8" width="214.66666666666666" height="67"/>
+                                        <rect key="frame" x="20" y="8" width="177" height="99.666666666666671"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NG-iq-Pcf">
-                                        <rect key="frame" x="242.66666666666666" y="8" width="112.33333333333334" height="34"/>
+                                        <rect key="frame" x="205" y="8" width="150" height="34"/>
                                         <color key="backgroundColor" red="0.14380401370000001" green="0.1299412251" blue="0.35688281059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="16"/>
                                         <state key="normal" title="Contact">
@@ -128,14 +133,14 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFM-TD-1H6" userLabel="Separator Line View">
-                                        <rect key="frame" x="20" y="79" width="335" height="2"/>
+                                        <rect key="frame" x="20" y="111.66666666666669" width="335" height="2"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="Z53-dy-UGd"/>
                                         </constraints>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dm-di-cj3" userLabel="Info Text View" customClass="UITextViewFixed" customModule="Equaleyes" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="84.999999999999986" width="335" height="150.66666666666663"/>
+                                        <rect key="frame" x="20" y="117.6666666666667" width="335" height="183.33333333333337"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididuntLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -144,7 +149,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="2NG-iq-Pcf" firstAttribute="width" secondItem="Yuo-GM-Ktf" secondAttribute="width" multiplier="0.3" id="1bX-bA-9vt"/>
+                                    <constraint firstItem="2NG-iq-Pcf" firstAttribute="width" secondItem="Yuo-GM-Ktf" secondAttribute="width" multiplier="0.4" id="1bX-bA-9vt"/>
                                     <constraint firstItem="2NG-iq-Pcf" firstAttribute="top" secondItem="Aun-ZG-gZE" secondAttribute="top" id="2cp-o7-tL4"/>
                                     <constraint firstItem="2NG-iq-Pcf" firstAttribute="leading" secondItem="Aun-ZG-gZE" secondAttribute="trailing" constant="8" id="6hP-EG-bn6"/>
                                     <constraint firstItem="Aun-ZG-gZE" firstAttribute="leading" secondItem="Yuo-GM-Ktf" secondAttribute="leading" constant="20" id="9pe-kY-1kX"/>
@@ -197,14 +202,14 @@
                             <constraint firstItem="kMu-wQ-sMH" firstAttribute="trailing" secondItem="boi-KE-nMg" secondAttribute="trailing" id="L6b-rR-svX"/>
                             <constraint firstItem="kMu-wQ-sMH" firstAttribute="leading" secondItem="boi-KE-nMg" secondAttribute="leading" id="S4c-b7-JPq"/>
                             <constraint firstItem="Yuo-GM-Ktf" firstAttribute="trailing" secondItem="boi-KE-nMg" secondAttribute="trailing" id="bca-yT-tLT"/>
-                            <constraint firstItem="boi-KE-nMg" firstAttribute="bottom" secondItem="kMu-wQ-sMH" secondAttribute="bottom" id="czR-5R-0vX"/>
+                            <constraint firstItem="kMu-wQ-sMH" firstAttribute="height" secondItem="boi-KE-nMg" secondAttribute="height" id="gYq-GS-rsB"/>
                             <constraint firstItem="kMu-wQ-sMH" firstAttribute="width" secondItem="DCz-f0-G8C" secondAttribute="width" multiplier="0.5" id="pSQ-yL-Yx9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="boi-KE-nMg"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="czR-5R-0vX"/>
                                 <exclude reference="L6b-rR-svX"/>
+                                <exclude reference="gYq-GS-rsB"/>
                                 <exclude reference="pSQ-yL-Yx9"/>
                                 <exclude reference="25w-MR-u4n"/>
                                 <exclude reference="AM7-5I-ioG"/>
@@ -214,7 +219,7 @@
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="czR-5R-0vX"/>
+                                <include reference="gYq-GS-rsB"/>
                                 <include reference="pSQ-yL-Yx9"/>
                                 <include reference="25w-MR-u4n"/>
                                 <include reference="HyI-gC-KSN"/>
@@ -222,7 +227,7 @@
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="czR-5R-0vX"/>
+                                <include reference="gYq-GS-rsB"/>
                                 <include reference="pSQ-yL-Yx9"/>
                                 <include reference="25w-MR-u4n"/>
                                 <include reference="HyI-gC-KSN"/>
@@ -237,7 +242,7 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="czR-5R-0vX"/>
+                                <include reference="gYq-GS-rsB"/>
                                 <include reference="pSQ-yL-Yx9"/>
                                 <include reference="25w-MR-u4n"/>
                                 <include reference="HyI-gC-KSN"/>
@@ -247,8 +252,8 @@
                     <connections>
                         <outlet property="contactButtonOutlet" destination="2NG-iq-Pcf" id="O05-ce-xjj"/>
                         <outlet property="infoImageView" destination="kMu-wQ-sMH" id="EOW-UE-wx5"/>
+                        <outlet property="infoImageViewHeightConstraint" destination="6MU-88-e6i" id="ygg-ce-Bq1"/>
                         <outlet property="longInfoTextView" destination="4dm-di-cj3" id="7cl-9i-JOt"/>
-                        <outlet property="portraitImageViewConstraint" destination="95B-s6-kqf" id="k2X-uJ-P5y"/>
                         <outlet property="shortInfoTextView" destination="Aun-ZG-gZE" id="jCh-Ou-8Tk"/>
                     </connections>
                 </viewController>
@@ -267,6 +272,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="view.backgroundColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="Rjn-fe-62K" kind="relationship" relationship="rootViewController" id="zR4-mx-ram"/>
                     </connections>

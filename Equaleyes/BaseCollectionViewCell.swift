@@ -26,7 +26,6 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
     let userProfileImageView: UIImageView = {
         let userProfileImageView = UIImageView()
         userProfileImageView.translatesAutoresizingMaskIntoConstraints = false
-        userProfileImageView.image = UIImage(named: "No Image")
         userProfileImageView.isUserInteractionEnabled = false
         userProfileImageView.layer.cornerRadius = 35
         userProfileImageView.layer.borderWidth = 1.0

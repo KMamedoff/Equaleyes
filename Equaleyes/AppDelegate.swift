@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         selectAppEnvironment()
         
+        #warning("REMOVE THIS")
+        //let cache = ImageCache.default
+        //cache.clearMemoryCache()
+        //cache.clearDiskCache { print("Done") }
+        
         return true
     }
     

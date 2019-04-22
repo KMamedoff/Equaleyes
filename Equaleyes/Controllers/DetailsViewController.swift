@@ -11,7 +11,7 @@ import Kingfisher
 
 class DetailsViewController: UIViewController {
     
-    @IBOutlet weak var portraitImageViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var infoImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var shortInfoTextView: UITextViewFixed!
     @IBOutlet weak var contactButtonOutlet: UIButton!
@@ -138,17 +138,20 @@ class DetailsViewController: UIViewController {
     }
     
     fileprivate func resizeImageView(_ value: RetrieveImageResult) {
-        let infoImageViewSize = UIScreen.main.bounds.size
         let infoImageAspectRatio = value.image.size.height / value.image.size.width
         
-        portraitImageViewConstraint.constant = infoImageViewSize.width * infoImageAspectRatio
+        infoImageViewHeightConstraint.constant = UIScreen.main.bounds.width * infoImageAspectRatio
         
-        if portraitImageViewConstraint.constant >= UIScreen.main.bounds.height * 0.4 {
-            portraitImageViewConstraint.constant = UIScreen.main.bounds.height * 0.4
+        if infoImageViewHeightConstraint.constant >= UIScreen.main.bounds.height * 0.4 {
+            infoImageViewHeightConstraint.constant = UIScreen.main.bounds.height * 0.4
         }
         
-        UIView.animate(withDuration: 0.2) {
-            self.view.layoutIfNeeded()
+        if value.cacheType.cached {
+            self.infoImageView.layoutIfNeeded()
+        } else {
+            UIView.animate(withDuration: 0.3) {
+                self.infoImageView.layoutIfNeeded()
+            }
         }
     }
     
