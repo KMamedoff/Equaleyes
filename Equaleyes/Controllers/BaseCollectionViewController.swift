@@ -46,12 +46,11 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         if items.count == 0 {
             view.addSubview(activityIndicator)
             activityIndicator.center = view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
-            activityIndicator.color = UIColor.darkGray
+            activityIndicator.style = .whiteLarge
+            activityIndicator.color = .darkGray
             activityIndicator.startAnimating()
         } else {
-            if !activityIndicator.isHidden {
+            if activityIndicator.isAnimating {
                 activityIndicator.stopAnimating()
                 activityIndicator.removeFromSuperview()
             }
