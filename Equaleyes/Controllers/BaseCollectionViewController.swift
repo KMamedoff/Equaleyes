@@ -12,7 +12,7 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
     
     fileprivate let cellId = "Base Cell"
     fileprivate var activityIndicator = UIActivityIndicatorView()
-
+    
     var items = [U]()
     
     var layout: UICollectionViewFlowLayout = {
@@ -59,10 +59,12 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         return items.count
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionViewFrameWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+        let layoutLeftInset = layout.sectionInset.left
+        let layoutRightInset = layout.sectionInset.right
         
-        layout.estimatedItemSize = CGSize(width: collectionView!.safeAreaLayoutGuide.layoutFrame.width - layout.sectionInset.left - layout.sectionInset.right, height: 10)
+        return CGSize(width: collectionViewFrameWidth - layoutLeftInset - layoutRightInset, height: 10)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
