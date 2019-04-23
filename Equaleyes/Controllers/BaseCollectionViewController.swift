@@ -11,7 +11,7 @@ import UIKit
 class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "Base Cell"
-    fileprivate var activityIndicator = UIActivityIndicatorView()
+    fileprivate var activityIndicatorView = UIActivityIndicatorView()
     
     var items = [U]()
     
@@ -31,6 +31,17 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
     }
     
     func setupViews() {
+        // Activity Indicator View
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.style = .whiteLarge
+        activityIndicatorView.color = .darkGray
+        activityIndicatorView.startAnimating()
+        
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        // Collection View
         collectionView?.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.00)
         collectionView?.register(T.self, forCellWithReuseIdentifier: cellId)
         collectionView?.delegate = self
@@ -43,17 +54,9 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if items.count == 0 {
-            view.addSubview(activityIndicator)
-            activityIndicator.center = view.center
-            activityIndicator.style = .whiteLarge
-            activityIndicator.color = .darkGray
-            activityIndicator.startAnimating()
-        } else {
-            if activityIndicator.isAnimating {
-                activityIndicator.stopAnimating()
-                activityIndicator.removeFromSuperview()
-            }
+        if items.count != 0 {
+            activityIndicatorView.stopAnimating()
+            activityIndicatorView.removeFromSuperview()
         }
         
         return items.count
