@@ -18,3 +18,27 @@ class ContactActionSheet {
             ])
     }
 }
+
+class ContactButton: UIButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+    
+    private func setup() {
+        layer.masksToBounds = true
+        layer.cornerRadius = 16
+        titleLabel?.font = Font.contact
+        setTitle("contact_button_title".localizedString(), for: .normal)
+        setTitleColor(.white, for: .normal)
+        setTitleColor(.lightGray, for: .highlighted)
+        backgroundColor = UIColor(red:0.15, green:0.13, blue:0.37, alpha:1.00)
+    }
+}

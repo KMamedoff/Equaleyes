@@ -84,9 +84,9 @@
 		7B5C1D912265411E00AF5E3D /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		7B5C1D932265E48900AF5E3D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7B5C1D952266053600AF5E3D /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		7B64ED5122694B9100CEE22D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseCollectionViewCell.swift; path = ../BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		7B64ED5122694B9100CEE22D /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B64ED5D22694C1800CEE22D /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
-		7B64ED6622694EAC00CEE22D /* TeacherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeacherCell.swift; path = ../TeacherCell.swift; sourceTree = "<group>"; };
+		7B64ED6622694EAC00CEE22D /* TeacherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherCell.swift; sourceTree = "<group>"; };
 		7B808E1B2267B78500E2E061 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		7B8DBF902267309F00E5302E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		7B8DBF93226730EA00E5302E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		7B8DBF9B2267314900E5302E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7B8DBFA32267454600E5302E /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7BA71097226A811E004CB181 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		7BB34682226A3B0200C9B814 /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentCell.swift; path = ../StudentCell.swift; sourceTree = "<group>"; };
+		7BB34682226A3B0200C9B814 /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
 		7BB34684226A3C5400C9B814 /* StudentsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsCollectionViewController.swift; sourceTree = "<group>"; };
 		7BDCBB67226720F5009CA101 /* Equaleyes Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Equaleyes Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BDCBB68226720F5009CA101 /* Info-Dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Dev.plist"; path = "/Users/mamedoff/Desktop/Projects/Equaleyes/Equaleyes/Info-Dev.plist"; sourceTree = "<absolute>"; };

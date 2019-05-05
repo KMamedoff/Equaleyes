@@ -30,6 +30,7 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         userProfileImageView.layer.cornerRadius = 35
         userProfileImageView.layer.borderWidth = 1.0
         userProfileImageView.layer.borderColor = UIColor.lightGray.cgColor
+        userProfileImageView.layer.backgroundColor = UIColor.groupTableViewBackground.cgColor
         userProfileImageView.layer.masksToBounds = true
         
         return userProfileImageView
@@ -55,16 +56,9 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         return arrowImageView
     }()
     
-    let contactButton: UIButton = {
-        let contactButton = UIButton()
+    let contactButton: ContactButton = {
+        let contactButton = ContactButton()
         contactButton.translatesAutoresizingMaskIntoConstraints = false
-        contactButton.layer.masksToBounds = true
-        contactButton.layer.cornerRadius = 16
-        contactButton.titleLabel?.font = Font.contact
-        contactButton.setTitle("contact_button_title".localizedString(), for: .normal)
-        contactButton.setTitleColor(.white, for: .normal)
-        contactButton.setTitleColor(.lightGray, for: .highlighted)
-        contactButton.backgroundColor = UIColor(red:0.15, green:0.13, blue:0.37, alpha:1.00)
         
         return contactButton
     }()
@@ -87,8 +81,21 @@ class BaseCollectionViewCell<U>: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var isSelected: Bool {
+        didSet {
+            self.roundedBackgroundView.backgroundColor = isSelected ? UIColor(white: 217.0/255.0, alpha: 1.0) : UIColor.white
+        }
+    }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            self.roundedBackgroundView.backgroundColor = isHighlighted ? UIColor(white: 217.0/255.0, alpha: 1.0) : UIColor.white
+        }
+    }
+    
     override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
         width.constant = bounds.size.width
+        
         return contentView.systemLayoutSizeFitting(CGSize(width: targetSize.width, height: 1))
     }
     

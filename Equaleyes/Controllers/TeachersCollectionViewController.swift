@@ -62,7 +62,7 @@ class TeachersCollectionViewController: BaseCollectionViewController<TeacherCell
         if segue.identifier == "Teacher Details Segue" {
             let detailsVC = segue.destination as! DetailsViewController
             let indexPath = sender as! IndexPath
-            detailsVC.detailsData = self.items[indexPath.row]
+            detailsVC.personDetails = self.items[indexPath.row]
         }
     }
     

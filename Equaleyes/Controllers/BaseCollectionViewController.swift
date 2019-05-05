@@ -11,18 +11,26 @@ import UIKit
 class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "Base Cell"
-    fileprivate var activityIndicatorView = UIActivityIndicatorView()
     
-    var items = [U]()
+    fileprivate var activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.style = .whiteLarge
+        activityIndicatorView.color = .darkGray
+        activityIndicatorView.startAnimating()
+        
+        return activityIndicatorView
+    }()
     
-    var layout: UICollectionViewFlowLayout = {
+    fileprivate var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         layout.minimumLineSpacing = 20
-        layout.estimatedItemSize = CGSize(width: 10, height: 10)
+        layout.estimatedItemSize = CGSize(width: 1, height: 1)
         
         return layout
     }()
+    
+    var items = [U]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +41,6 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
     func setupViews() {
         // Activity Indicator View
         view.addSubview(activityIndicatorView)
-        activityIndicatorView.style = .whiteLarge
-        activityIndicatorView.color = .darkGray
-        activityIndicatorView.startAnimating()
         
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -47,33 +52,30 @@ class BaseCollectionViewController<T: BaseCollectionViewCell<U>, U>: UICollectio
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.delaysContentTouches = false // A "fix" for Contact button
-        collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.bounces = true
         collectionView?.alwaysBounceVertical = true
+        collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.collectionViewLayout = layout
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if items.count != 0 {
             activityIndicatorView.stopAnimating()
-            activityIndicatorView.removeFromSuperview()
         }
         
         return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewFrameWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
-        let layoutLeftInset = layout.sectionInset.left
-        let layoutRightInset = layout.sectionInset.right
+        let sectionInset = layout.sectionInset
+        let referenceHeight: CGFloat = 1
+        let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+            - sectionInset.left
+            - sectionInset.right
+            - collectionView.contentInset.left
+            - collectionView.contentInset.right
         
-        return CGSize(width: collectionViewFrameWidth - layoutLeftInset - layoutRightInset, height: 10)
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        layout.invalidateLayout()
+        return CGSize(width: referenceWidth, height: referenceHeight)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

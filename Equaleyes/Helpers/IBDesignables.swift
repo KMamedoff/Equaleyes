@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable class UITextViewFixed: UITextView {
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         setup()
     }
     

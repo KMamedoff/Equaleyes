@@ -9,28 +9,24 @@
 import UIKit
 import Kingfisher
 
+protocol DisplayablePerson {
+    // You can just return a String value but it will make things more complicated for no good reason because each Struct have different properties so it is better to return NSMutableAttributedString in this case
+    var shortInfoAttributedString: NSAttributedString? { get }
+    var longInfoAttributedString: NSAttributedString? { get }
+    var schoolImageUrl: String? { get }
+    var isContactable: Bool { get } // A dummy variable for a dummy button
+}
+
 class DetailsViewController: UIViewController {
     
     @IBOutlet weak var infoImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoImageView: UIImageView!
+    @IBOutlet weak var contactButtonOutlet: ContactButton!
     @IBOutlet weak var shortInfoTextView: UITextViewFixed!
-    @IBOutlet weak var contactButtonOutlet: UIButton!
     @IBOutlet weak var longInfoTextView: UITextViewFixed!
     
-    fileprivate var shortInfoMutableAttributedString = NSMutableAttributedString()
-    fileprivate var longInfoMutableAttributedString = NSMutableAttributedString()
-    fileprivate var isTeacher = false
+    var personDetails: DisplayablePerson?
     
-    var detailsData: Any? {
-        didSet {
-            if detailsData is Teacher {
-                isTeacher = true
-            } else if detailsData is Student {
-                isTeacher = false
-            }
-        }
-    }
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,112 +38,40 @@ class DetailsViewController: UIViewController {
         
         contactButtonOutlet.setTitle("contact_button_title".localizedString(), for: .normal)
         
-        isTeacher ? fillTeacherInfo(detailsData: detailsData as! Teacher) : fillStudentInfo(detailsData: detailsData as! Student)
+        guard let personDetails = personDetails else { return }
+        fillPersonInfo(person: personDetails)
     }
     
-    fileprivate func fillTeacherInfo(detailsData: Teacher) {
-        contactButtonOutlet.isHidden = false
+    fileprivate func fillPersonInfo(person: DisplayablePerson) {
+        shortInfoTextView.attributedText = person.shortInfoAttributedString
+        longInfoTextView.attributedText = person.longInfoAttributedString
         
-        // Image View
-        if let imageUrl = detailsData.school?.imageUrl {
-            infoImageView.setImageWithKingfisher(with: imageUrl) { result in
-                switch result {
-                case .success(let value):
-                    self.resizeImageView(value)
-                case .failure(_):
-                    self.infoImageView.image = UIImage(named: "No Image")
-                }
+        guard let schoolImageUrl = person.schoolImageUrl else { return }
+        infoImageView.setImageWithKingfisher(with: schoolImageUrl) { result in
+            switch result {
+            case .success(let value):
+                self.resizeImageView(value)
+            case .failure(_):
+                self.infoImageView.image = UIImage(named: "No Image")
             }
         }
         
-        // Short Info
-        if let name = detailsData.name {
-            shortInfoMutableAttributedString.append("\(name)\n".customAttributedString(font: Font.header, textColor: UIColor.darkGray))
+        if !person.isContactable {
+            contactButtonOutlet.isHidden = true
         }
-        
-        if let teacherClass = detailsData.teacherClass {
-            let teacherClassLocalizedString = "class".localizedString() + ": \(teacherClass)\n"
-            shortInfoMutableAttributedString.append(teacherClassLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
-        }
-        
-        if let schoolName = detailsData.school?.name {
-            let schoolNameLocalizedString = "school".localizedString() + ": \(schoolName)"
-            shortInfoMutableAttributedString.append(schoolNameLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
-        }
-        
-        shortInfoTextView.attributedText = shortInfoMutableAttributedString
-        
-        // Long Info
-        if let description = detailsData.description {
-            if description != "" {
-                let longInfoTitle = "details_about_title".localizedString() + "\n"
-                longInfoMutableAttributedString.append(longInfoTitle.customAttributedString(font: Font.header, textColor: UIColor.darkGray))
-                
-                let longInfoDescription = "\(description)"
-                longInfoMutableAttributedString.append(longInfoDescription.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
-            }
-        }
-        
-        longInfoTextView.attributedText = longInfoMutableAttributedString
-    }
-    
-    fileprivate func fillStudentInfo(detailsData: Student) {
-        contactButtonOutlet.isHidden = true
-        
-        // Image View
-        if let imageUrl = detailsData.school?.imageUrl {
-            infoImageView.setImageWithKingfisher(with: imageUrl) { result in
-                switch result {
-                case .success(let value):
-                    self.resizeImageView(value)
-                case .failure(_):
-                    self.infoImageView.image = UIImage(named: "No Image")
-                }
-            }
-        }
-        
-        // Short Info
-        if let name = detailsData.name {
-            shortInfoMutableAttributedString.append("\(name)\n".customAttributedString(font: Font.header, textColor: UIColor.darkGray))
-        }
-        
-        if let grade = detailsData.grade {
-            let teacherClassLocalizedString = "grade".localizedString() + ": \(grade)\n"
-            shortInfoMutableAttributedString.append(teacherClassLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
-        }
-        
-        if let schoolName = detailsData.school?.name {
-            let schoolNameLocalizedString = "school".localizedString() + ": \(schoolName)"
-            shortInfoMutableAttributedString.append(schoolNameLocalizedString.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
-        }
-        
-        shortInfoTextView.attributedText = shortInfoMutableAttributedString
-        
-        // Long Info
-        if let description = detailsData.description {
-            if description != "" {
-                let longInfoTitle = "details_about_title".localizedString() + "\n"
-                longInfoMutableAttributedString.append(longInfoTitle.customAttributedString(font: Font.header, textColor: UIColor.darkGray))
-                
-                let longInfoDescription = "\(description)"
-                longInfoMutableAttributedString.append(longInfoDescription.customAttributedString(font: Font.content, textColor: UIColor.darkGray))
-            }
-        }
-        
-        longInfoTextView.attributedText = longInfoMutableAttributedString
     }
     
     fileprivate func resizeImageView(_ value: RetrieveImageResult) {
         let infoImageAspectRatio = value.image.size.height / value.image.size.width
         
-        infoImageViewHeightConstraint.constant = UIScreen.main.bounds.width * infoImageAspectRatio
+        infoImageViewHeightConstraint.constant = UIScreen.main.nativeBounds.width / UIScreen.main.nativeScale * infoImageAspectRatio
         
-        if infoImageViewHeightConstraint.constant >= UIScreen.main.bounds.height * 0.4 {
-            infoImageViewHeightConstraint.constant = UIScreen.main.bounds.height * 0.4
+        if infoImageViewHeightConstraint.constant >= UIScreen.main.nativeBounds.height / UIScreen.main.nativeScale * 0.4 {
+            infoImageViewHeightConstraint.constant = UIScreen.main.nativeBounds.height / UIScreen.main.nativeScale * 0.4
         }
         
         if value.cacheType.cached {
-            self.infoImageView.layoutIfNeeded()
+            infoImageView.layoutIfNeeded()
         } else {
             UIView.animate(withDuration: 0.3) {
                 self.infoImageView.layoutIfNeeded()
@@ -158,4 +82,5 @@ class DetailsViewController: UIViewController {
     @IBAction func contactButtonAction(_ sender: UIButton) {
         ContactActionSheet.presentContactActionSheet(sender: contactButtonOutlet)
     }
+    
 }
